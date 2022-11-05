@@ -1,4 +1,4 @@
-## Määrittelydokumentti
+# Määrittelydokumentti
 
 Opinto-ohjelma: tietojenkäsittelytieteen kandidaatti (TKT)
 
@@ -16,9 +16,9 @@ esim. käyttäjä voisi valita kappaleen keston.
 Aion hyödyntää Markovin ketjua ja trie-tietorakennetta. Markovin ketjun avulla voidaan luoda uutta musiikkia, sillä sen avulla ohjelma valitsee aina seuraavan sävelen. Trie-tietorakenteen avulla voi tallentaa sävelsekvenssejä.
 
 
-# Tavoitteet aika- ja tilavaativuuksien suhteen:
+## Tavoitteet aika- ja tilavaativuuksien suhteen:
 
 Trie-tietorakenteen tilavaativuus on O(n). Aikavaativuutta on vaikea sanoa tässä vaiheessa, mutta varmaan parempi kuin O(n^2)
 
 
-# Lähteet:
+## Lähteet:
