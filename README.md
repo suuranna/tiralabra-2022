@@ -1,10 +1,11 @@
 # tiralabra-2022
 
-Sovelluksen voi käynnistää ensin asentamalla riippuvuudet komennolla ´poetry install´
+Sovelluksen voi käynnistää ensin asentamalla riippuvuudet komennolla 
+`poetry install`
 
-ja sovellus käynnistyy komennolla´poetry run python3 src/sovellus.py´
+ja sovellus käynnistyy komennolla
+`poetry run python3 src/sovellus.py`
 
-
-Koodin laadun saa selville komennolla ´pylint src´
+Koodin laadun saa selville komennolla `pylint src`
 
 Viikon 2 raportti löytyy dokumentaatiosta
