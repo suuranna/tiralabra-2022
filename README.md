@@ -8,4 +8,4 @@ ja sovellus käynnistyy komennolla
 
 Koodin laadun saa selville komennolla `pylint src`
 
-Viikon 2 raportti löytyy dokumentaatiosta
+Viikon 3 raportti löytyy dokumentaatiosta
