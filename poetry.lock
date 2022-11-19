@@ -1,0 +1,37 @@
+[[package]]
+name = "musicalbeeps"
+version = "0.2.9"
+description = "Play sound beeps corresponding to musical notes."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+numpy = "*"
+simpleaudio = "*"
+
+[[package]]
+name = "numpy"
+version = "1.23.4"
+description = "NumPy is the fundamental package for array computing with Python."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
+name = "simpleaudio"
+version = "1.0.4"
+description = "Simple, asynchronous audio playback for Python 3."
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.8"
+content-hash = "3cb7f29df7118e47d0a6fa9a15f86a35c0a183e0084bc6a910bc268815c28451"
+
+[metadata.files]
+musicalbeeps = []
+numpy = []
+simpleaudio = []
