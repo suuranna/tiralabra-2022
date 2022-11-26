@@ -1,11 +1,7 @@
 # tiralabra-2022
 
-Sovelluksen voi käynnistää ensin asentamalla riippuvuudet komennolla 
-`poetry install`
+[Sovelluksen käyttöohje](https://github.com/suuranna/tiralabra-2022/blob/main/dokumentaatio/kayttoohje.md)
 
-ja sovellus käynnistyy komennolla
-`poetry run python3 src/sovellus.py`
+[Viikon 4 viikkoraportti](https://github.com/suuranna/tiralabra-2022/blob/main/dokumentaatio/viikkoraportit/viikkoraportti4.md)
 
-Koodin laadun saa selville komennolla `pylint src`
 
-Viikon 3 raportti löytyy dokumentaatiosta
