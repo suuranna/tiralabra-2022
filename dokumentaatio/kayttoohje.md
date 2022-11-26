@@ -1,5 +1,7 @@
 # Käyttöohje
 
+## Käyttööotto
+
 Sovelluksen voi käynnistää ensin asentamalla riippuvuudet komennolla 
 `poetry install`
 
@@ -9,3 +11,17 @@ ja sovellus käynnistyy komennolla
 Koodin laadun saa selville komennolla `pylint src`
 
 Testit voi suorittaa komennolla `poetry run pytest src`
+
+## Miten sovellusta käytetään?
+
+Sovelluksen käynnistäessa aukeaa etusivunäkymä, jos nappia painamlla voi joko generoida uuden kappaleen ja siirtyä kuuntelemaan sitä toiseen näkymään tai sitten siirtyä näkymään, jossa voi lisätä kappaleen opetusdataan.
+
+
+Opetusdataa ei vielä voi lisätä kappaleita, mutta ajatuksen on, että kappaleet lisätään peräkkäisinä sävel-nuotti yhdisteinä. 
+Esimerkiksi "C4-1 D5-2 E4-1", jossa C4 on C-sävel neljänneltä oktaavilta ja 1 tarkoittaa neljännesosanuottia jne.
+(1=neljäsosanuotti, 2=kahdeksasosanuotti, 3=kokonaisnuotti, 4=pisteellinen nuotti)
+
+
+Generoidun kappaleen voi kuunnella, mutta sen tempoa ei vielä voi itse valita vaan se on vakio 60. Generoitu kappale on tällä hetkellä
+aina 15 säveltä/nuottia pitkä ja opetusdataan on lisätty vain Tuiki tuiki tähtönen ja Lady Gagan Bad romancesta pieni osa, joten generoitu kappale ei
+vielä ole mitenkään tajunnan räjäyttävä.
