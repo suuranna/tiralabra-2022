@@ -1,1 +1,2 @@
-{"testi": 4}
+{"nuotit": {"neljäsosa": {"neljäsosa": 12, "puoli": 2, "kahdeksasosa": 1, "piste": 1}, "puoli": {"neljäsosa": 1}, "kahdeksasosa": {"kahdeksasosa": 7, "piste": 2, "neljäsosa": 2}, "piste": {"kahdeksasosa": 2}}, 
+"sävelet": {"C4": {"C4": 1, "G4": 1, "D4": 2, "F4": 1}, "D4": {"C4": 2, "D4": 1, "E4": 2, "B3": 1}, "G4": {"G4": 1, "A4": 1, "F4": 1}, "A4": {"A4": 1, "G4": 1}, "F4": {"F4": 1, "E4": 3}, "E4": {"E4": 4, "D4": 3, "C4": 1, "F4": 1}, "B3": {"C4": 1}}}

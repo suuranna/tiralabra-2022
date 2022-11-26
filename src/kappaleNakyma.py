@@ -1,5 +1,8 @@
 from tkinter import ttk, constants
 
+global tempo 
+tempo = 60
+
 class KappaleNakyma:
     def __init__(self, juuri, soita_generoitu_kappale, takaisin_etusivulle):
         self._juuri = juuri
