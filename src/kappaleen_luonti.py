@@ -10,7 +10,7 @@ def arvo_savelia():
     alku = random.choice(savelia)
 
     edellinen = alku
-    for i in range(15):
+    for i in range(25):
         savelet2 = None
         todennakoisyys = []
         if i == 0:
@@ -34,7 +34,7 @@ def arvo_nuotteja():
     alku = random.choice(nuotteja)
 
     edellinen = alku
-    for i in range(15):
+    for i in range(25):
         nuotit2 = None
         todennakoisyys = []
         if i == 0:
@@ -82,11 +82,11 @@ def soita_kappale(savelet, nuotit, tempo):
     for i in range(len(savelet)):
         kesto = 0
         if nuotit[i] == "neljäsosa":
-            kesto = tempo / 60
+            kesto = 60 / tempo
         elif nuotit[i] == "puoli":
-            kesto = tempo / 30
+            kesto = 120 / tempo
         elif nuotit[i] == "piste":
-            kesto = tempo / 40
+            kesto = 90 / tempo
         else: # if kahdeksasosa
-            kesto = tempo / 120
+            kesto = 30 / tempo
         musicalbeeps.Player(volume=1, mute_output=False).play_note(savelet[i], kesto)
