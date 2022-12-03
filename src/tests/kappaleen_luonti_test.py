@@ -7,8 +7,8 @@ class TestKappaleen_luonti(unittest.TestCase):
 
     def test_arvo_savelia(self):
         savelet = arvo_savelia()
-        self.assertEqual(15, len(savelet))
+        self.assertEqual(25, len(savelet))
 
     def test_arvo_nuotteja(self):
         nuotteja = arvo_nuotteja()
-        self.assertEqual(15, len(nuotteja))
+        self.assertEqual(25, len(nuotteja))

@@ -1,6 +1,7 @@
 import random
 import musicalbeeps
 from jsonFunktiot import avaaJson#, tallennaJson
+from trierakenne import Solmu, TrieRakenne
 
 def arvo_savelia():
     notes = []

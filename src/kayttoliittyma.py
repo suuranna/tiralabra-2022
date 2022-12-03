@@ -4,7 +4,7 @@ from kappaleNakyma import KappaleNakyma
 from opetus_nakyma import OpetusNakyma
 from kappaleen_luonti import *
 from jsonFunktiot import *
-
+from trierakenne import *
 
 class KL:
     """Luokka, joka vastaa käyttöliittymää
@@ -21,8 +21,8 @@ class KL:
     def __init__(self, juuri):
         self._juuri = juuri
         self._nakymaNyt = None
-        #self._uudenKappaleenSavelet = None
-        #self._uudenKappaleenNuotit = None
+        self._savelet = TrieRakenne("sävelet")
+        self._nuotit = TrieRakenne("nuotit")
         #self._tempo = None
         
 
@@ -63,7 +63,7 @@ class KL:
         #self._uudenKappaleenSavelet = arvo_savelia()
         #self._uudenKappaleenNuotit = arvo_nuotteja()
         self.piilota_nakyma()
-        self._nakymaNyt = KappaleNakyma(self._juuri, self.siirry_etusivulle)
+        self._nakymaNyt = KappaleNakyma(self._juuri, self.siirry_etusivulle, self._nuotit, self._savelet)
         #self._nakymaNyt = KappaleNakyma(self._juuri, self.soita_generoitu_kappale, self.siirry_etusivulle)
         #self._nakymaNyt = KappaleNakyma(self._juuri, self.siirry_etusivulle, self.soita_generoitu_kappale, self._tempo)
         self._nakymaNyt.pakkaa()
