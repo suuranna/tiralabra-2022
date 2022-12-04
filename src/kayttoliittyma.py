@@ -53,7 +53,7 @@ class KL:
 
     def nayta_opetusnakyma(self):
         self.piilota_nakyma()
-        self._nakymaNyt = OpetusNakyma(self._juuri, self.lisaa_opetusdataa, self.siirry_etusivulle)
+        self._nakymaNyt = OpetusNakyma(self._juuri, self.siirry_etusivulle, self._savelet, self._nuotit)
         self._nakymaNyt.pakkaa()
 
     def nayta_generoitu_kappale(self):

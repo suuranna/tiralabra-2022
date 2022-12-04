@@ -80,6 +80,21 @@ def lisaa_kappale_opetusdataan(kappale):
     return "kappale lisätty onnistuneesti opetusdataan :)"
 
 def soita_kappale(savelet, nuotit, tempo):
+    for i in range(len(nuotit)):
+        kesto = 0
+        savel = ""
+        savel = savel + savelet[i*2] + savelet[(i*2)+1]
+        if nuotit[i] == "1":
+            kesto = 60 / tempo
+        elif nuotit[i] == "3":
+            kesto = 120 / tempo
+        elif nuotit[i] == "4":
+            kesto = 90 / tempo
+        else: # if kahdeksasosa
+            kesto = 30 / tempo
+        musicalbeeps.Player(volume=1, mute_output=False).play_note(savel, kesto)
+
+def soita_kappale1(savelet, nuotit, tempo):
     for i in range(len(savelet)):
         kesto = 0
         if nuotit[i] == "neljäsosa":
