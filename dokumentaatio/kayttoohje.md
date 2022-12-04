@@ -23,6 +23,5 @@ Esimerkiksi "C4-1 D5-2 E4-1", jossa C4 on C-sävel neljänneltä oktaavilta ja 1
 
 
 Generoidun kappaleen voi kuunnella haluamassaa tempossa. Generoitu kappale on tällä hetkellä
-aina 15 säveltä/nuottia pitkä ja opetusdataan on lisätty vain Tuiki tuiki tähtönen ja Lady Gagan Bad romancesta pieni osa, joten generoitu kappale ei
-vielä ole mitenkään tajunnan räjäyttävä. Trie-rakenne ei vielä ole kappaleen generoinnissa käytössä.
+aina 9 säveltä/nuottia pitkä ja opetusdataan on lisätty vain Tuiki tuiki tähtönen, Ukko-Nooa ja Lady Gagan Bad romancesta pieni osa, joten generoitu kappale ei vielä ole mitenkään tajunnan räjäyttävä. Generoitu kappale generoidaan nyt trie-rakenteen avulla, ja trierakenteeseen voi lisätä uutta dataa.
 
