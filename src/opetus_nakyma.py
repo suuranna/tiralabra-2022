@@ -64,7 +64,7 @@ class OpetusNakyma:
         otsikko = ttk.Label(master=self._kehys, text="Lisää opetusdataa")
         self._data = Text(master=self._kehys, height=4, width=40)
         teksti = Text(master=self._kehys, height=6, width=50)
-        teksti.insert('1.0', "Tässä voit lisätä kappaleen opetusdataan. Kirjoita kappale muodossa sävel-nuotti Esim. C4-1 D4-2 E4-1 jossa 1=neljäsosanuotti, 2=kahdeksasosanuotti, 3=kokonaisnuotti ja 4=pisteellinen nuotti. Sävelen jälkeinen numero kertoo miltä korkeudelta sävel soitetaan. Käytätähän isoja kirjaimia :)")
+        teksti.insert('1.0', "Tässä voit lisätä kappaleen opetusdataan. Kirjoita kappale muodossa sävel-nuotti Esim. C4-1/4 D4-1/8 E4-1. Nuotteja vastaavat merkinnät ovat: 1/4=neljäsosanuotti, 1/8=kahdeksasosanuotti, 1/2=puolinuotti, 3/8=pisteellinen neljännesosanuotti, 1=kokonuotti, 1/16=kuudestoistaosanuotti. Nuotit määrittelevät sävelen keston. Sävelen jälkeinen numero kertoo miltä korkeudelta sävel soitetaan. Käytätähän isoja kirjaimia :)")
         teksti['state'] = 'disabled'
         self._data.insert('1.0', "Kirjoita tähän kappaleen sävelet ja nuotit")
         lisaa = ttk.Button(master=self._kehys, text="Lisää opetusdataan", command=self.lisaa_kappale_opetusdataan)
