@@ -40,51 +40,65 @@ class TrieRakenne(object):
                 i += 1
             solmu.kappaleen_loppu = True
 
-
-
     def generoi_kappale(self, solmu, kappale, min, max, savelet_vai_nuotit):
         if min < 0 or max < min or max < 0:
-            return
+            return None
 
         if solmu.kappaleen_loppu:
             kappale = kappale + solmu.nimi
             if savelet_vai_nuotit == "sävelet":
                 if len(kappale) // 2 >= min and len(kappale) // 2 <= max:
-                    #print(kappale)
                     return kappale
             elif savelet_vai_nuotit == "nuotit":
                 if len(kappale) >= min and len(kappale) <= max:
-                    #print(kappale)
                     return kappale
             else:
-                return kappale
+                return None
+
+        if not solmu.kappaleen_loppu:
+            if savelet_vai_nuotit == "sävelet":
+                if len(kappale) // 2 > max:
+                    return None
+            if savelet_vai_nuotit == "nuotit":
+                if len(kappale) > max:
+                    return None
+                    
         lapset = solmu.lapset.values()
         maarat = []
         nimet = []
         for lapsi in lapset:
             maarat.append(lapsi.maara)
             nimet.append(lapsi.nimi)
-        #print(maarat)
-        for lapsi in lapset:
-            #print(len(lapset))
+        while len(nimet) > 0:
             arvottu_solmu = random.choices(nimet, weights=maarat)
-            #for i in range(len(nimet)):
-            #    if nimet[i] == arvottu_solmu:
-            #        nimet.pop(i)
-            #        maarat.pop(i)
-            
-            #print(arvottu_solmu)
-            #self.generoi_kappale(lapsi, kappale + solmu.nimi, min, max, savelet_vai_nuotit)
+            for i in range(len(nimet)):
+                if nimet[i] == arvottu_solmu[0]:
+                    nimet.pop(i)
+                    maarat.pop(i)
+                    break
+
             a = self.generoi_kappale(solmu.lapset[arvottu_solmu[0]], kappale + solmu.nimi, min, max, savelet_vai_nuotit)
-            #print(a)
-            return a
-        #print(kappale)
-        #return kappale
+            if a:
+                return a
         return None
 
+
     def luo_kappale(self, min, max):
-        while True:
-            kappale = self.generoi_kappale(self.alku, "", min, max, self.savelet_vai_nuotit)
-            if kappale:
-                break
-        return kappale
+        kappale = self.generoi_kappale(self.alku, "", min, max, self.savelet_vai_nuotit)
+        kappale_listana = []
+
+        if self.savelet_vai_nuotit == "sävelet":
+            i = 0
+            while i < len(kappale):
+                savel = ""
+                savel = savel + kappale[i] + kappale[i+1]
+                if i + 2 < len(kappale):
+                    if kappale[i+2] == "#" or kappale[i+2] == "b":
+                        savel = savel + kappale[i+2]
+                        i = i + 3
+                kappale_listana.append(savel)
+                i = i + 2
+        else:
+            kappale_listana = list(kappale)
+
+        return kappale_listana

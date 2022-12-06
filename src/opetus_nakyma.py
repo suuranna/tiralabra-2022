@@ -5,7 +5,6 @@ class OpetusNakyma:
     def __init__(self, juuri, takaisin_etusivulle, savelet, nuotit):
         self._juuri = juuri
         self._kehys = None
-        #self._lisaa_opetusdataa = lisaa_opetusdataa
         self._savelet = savelet
         self._nuotit = nuotit
         self._takaisin_etusivulle = takaisin_etusivulle
@@ -20,25 +19,42 @@ class OpetusNakyma:
         self._kehys.destroy()
 
     def lisaa_kappale_opetusdataan(self):
+        nuottien_vastaavuudet = {"1/4": "1", "1/8": "2", "1/2": "3", "3/8": "4", "1/16": "5", "1": "6"}
+        sallitut_savelet = ["C", "D", "E", "F", "G", "A", "H", "B"]
+        sallitut_oktaavit = ["3", "4", "5"]
         data = self._data.get("1.0", 'end-1c')
         lista = data.split()
         savelet = []
         nuotit = []
 
         if len(lista) <= 1:
-            return "Anna kappale, joka on pidempi kuin yksi nuotti/sävel"
+            print("Anna kappale, joka on pidempi kuin yksi nuotti/sävel")
+            return 
 
         for alkio in lista:
             eroteltu = alkio.split("-")
-            if len(eroteltu) != 2 or len(eroteltu[0]) != 2 or len(eroteltu[1]) != 1:
+            if len(eroteltu) != 2 or len(eroteltu[0]) < 2 or len(eroteltu[0]) > 3:
                 print("Annettu kappale ei ollut kirjoitettu oikeassa muodossa")
-                break
-            #tarkista onko eroteltu[0] oikeassa muodossa oleva sävel
-            #jos ei ole niin break
+                return
+            if eroteltu[0][0] not in sallitut_savelet and eroteltu[0][1] not in sallitut_oktaavit:
+                print("sävel ei ollut oikeassa muodossa")
+                return
+            if eroteltu[1] not in nuottien_vastaavuudet.keys():
+                print("nuotti ei ollu oikeassa muodossa")
+                return
+            if len(eroteltu[0]) == 3:
+                if eroteltu[0][2] == "#" or eroteltu[0][2] == "b":
+                    savelet.append(eroteltu[0])
+                    nuotit.append(nuottien_vastaavuudet[eroteltu[1]])
+                    continue
+                else:    
+                    print("Vääränlainen ylennys- tai alennusmerkki")
+                    return
+
             savelet.append(eroteltu[0])
-            nuotit.append(eroteltu[1])
+            nuotit.append(nuottien_vastaavuudet[eroteltu[1]])
         self._savelet.lisaa_kappale(savelet)
-        self._nuotit.lisaa_kappale(savelet)
+        self._nuotit.lisaa_kappale(nuotit)
         print("kappale lisätty opetusdataan")
          
 
