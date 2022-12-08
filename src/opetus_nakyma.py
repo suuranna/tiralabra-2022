@@ -1,5 +1,6 @@
 from tkinter import ttk, constants, Text
 from trierakenne import *
+from jsonFunktiot import *
 
 class OpetusNakyma:
     def __init__(self, juuri, takaisin_etusivulle, savelet, nuotit):
@@ -19,13 +20,15 @@ class OpetusNakyma:
         self._kehys.destroy()
 
     def lisaa_kappale_opetusdataan(self):
-        nuottien_vastaavuudet = {"1/4": "1", "1/8": "2", "1/2": "3", "3/8": "4", "1/16": "5", "1": "6"}
+        nuottien_vastaavuudet = {"1/4": "1", "1/8": "2", "1/2": "3", "3/8": "4", "1/16": "5", "1": "6", "3/16": "7"}
         sallitut_savelet = ["C", "D", "E", "F", "G", "A", "H", "B"]
         sallitut_oktaavit = ["3", "4", "5"]
         data = self._data.get("1.0", 'end-1c')
         lista = data.split()
         savelet = []
         nuotit = []
+
+        opetusdata = avaaJson()
 
         if len(lista) <= 1:
             print("Anna kappale, joka on pidempi kuin yksi nuotti/sävel")
@@ -55,6 +58,9 @@ class OpetusNakyma:
             nuotit.append(nuottien_vastaavuudet[eroteltu[1]])
         self._savelet.lisaa_kappale(savelet)
         self._nuotit.lisaa_kappale(nuotit)
+        opetusdata["savelet"].append(savelet)
+        opetusdata["nuotit"].append(nuotit)
+        tallennaJson(opetusdata)
         print("kappale lisätty opetusdataan")
          
 
