@@ -9,3 +9,7 @@ Sovelluksessa lisätyt opetuskappaleet lisätään nyt json-tiedostoon.
 ## Ensi viikon tavoitteet
 
 Testausta ja koodiin kommentointia
+
+
+
+Käytetyt tunnit: 8h
