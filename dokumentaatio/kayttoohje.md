@@ -12,6 +12,16 @@ Koodin laadun saa selville komennolla `pylint src`
 
 Testit voi suorittaa komennolla `poetry run pytest src`
 
+Pelkistetyn estikattavuusraportin saa komennolla
+
+`poetry run coverage report -m`
+
+ja visuaallisemman testikattavuusraportin saa luotua komennolla
+`poetry run coverage html`
+
+jolloin tiedostoon htmlcov syntyy tiedosto nimeltään index.html ja sen avaamalla saa
+visuaalisen testikattavuusrapotin selaimeen.
+
 ## Miten sovellusta käytetään?
 
 Sovelluksen käynnistäessa aukeaa etusivunäkymä, jos nappia painamlla voi joko generoida uuden kappaleen ja siirtyä kuuntelemaan sitä toiseen näkymään tai sitten siirtyä näkymään, jossa voi lisätä kappaleen opetusdataan.
