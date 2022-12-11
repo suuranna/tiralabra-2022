@@ -2,6 +2,6 @@
 
 [Sovelluksen käyttöohje](https://github.com/suuranna/tiralabra-2022/blob/main/dokumentaatio/kayttoohje.md)
 
-[Viikon 5 viikkoraportti](https://github.com/suuranna/tiralabra-2022/blob/main/dokumentaatio/viikkoraportit/viikkoraportti5.md)
+[Viikon 6 viikkoraportti](https://github.com/suuranna/tiralabra-2022/blob/main/dokumentaatio/viikkoraportit/viikkoraportti6.md)
 
 
