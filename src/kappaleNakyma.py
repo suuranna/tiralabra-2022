@@ -1,6 +1,7 @@
 from tkinter import ttk, constants
 from kappaleen_soittaminen import soita_kappale
 from trierakenne import *
+from viestinakyma import Viestinakyma
 
 class KappaleNakyma:
     def __init__(self, juuri, takaisin_etusivulle, nuotit, savelet): 
@@ -21,16 +22,21 @@ class KappaleNakyma:
         self._kehys.destroy()
 
     def soita_generoitu_kappale(self):
+        viestinakyma = Viestinakyma()
         tempo = self._tempo.get()
         try:
             tempo = int(tempo)
         except:
-            print("Kirjoita jokin nollaa suurempi kokonaisluku numeromuodossa esim. 60")
+            viestinakyma.nayta_viesti("Kirjoita jokin nollaa suurempi kokonaisluku numeromuodossa esim. 60")
+            #print("Kirjoita jokin nollaa suurempi kokonaisluku numeromuodossa esim. 60")
             return
         if tempo > 0:
             soita_kappale(self._kappale[0], self._kappale[1], tempo)
+            #viestinakyma.tuhoa()
         else:
-            print("Kirjoita jokin nollaa suurempi kokonaisluku numeromuodossa esim. 60")
+            viestinakyma.nayta_viesti("Kirjoita jokin nollaa suurempi kokonaisluku numeromuodossa esim. 60")
+            #print("Kirjoita jokin nollaa suurempi kokonaisluku numeromuodossa esim. 60")
+        viestinakyma.tuhoa()
 
             
     def _alusta(self):

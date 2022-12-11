@@ -1,6 +1,7 @@
 from tkinter import ttk, constants, Text
 from trierakenne import *
 from jsonFunktiot import *
+from viestinakyma import Viestinakyma
 
 class OpetusNakyma:
     def __init__(self, juuri, takaisin_etusivulle, savelet, nuotit):
@@ -20,6 +21,7 @@ class OpetusNakyma:
         self._kehys.destroy()
 
     def lisaa_kappale_opetusdataan(self):
+        viestinakyma = Viestinakyma()
         nuottien_vastaavuudet = {"1/4": "1", "1/8": "2", "1/2": "3", "3/8": "4", "1/16": "5", "1": "6", "3/16": "7"}
         sallitut_savelet = ["C", "D", "E", "F", "G", "A", "H", "B"]
         sallitut_oktaavit = ["3", "4", "5"]
@@ -31,27 +33,27 @@ class OpetusNakyma:
         opetusdata = avaaJson()
 
         if len(lista) <= 1:
-            print("Anna kappale, joka on pidempi kuin yksi nuotti/sävel")
+            viestinakyma.nayta_viesti("Anna kappale, joka on pidempi kuin yksi nuotti/sävel")
             return 
 
         for alkio in lista:
             eroteltu = alkio.split("-")
             if len(eroteltu) != 2 or len(eroteltu[0]) < 2 or len(eroteltu[0]) > 3:
-                print("Annettu kappale ei ollut kirjoitettu oikeassa muodossa")
+                viestinakyma.nayta_viesti("Annettu kappale ei ollut kirjoitettu oikeassa muodossa")
                 return
             if eroteltu[0][0] not in sallitut_savelet and eroteltu[0][1] not in sallitut_oktaavit:
-                print("sävel ei ollut oikeassa muodossa")
+                viestinakyma.nayta_viesti("sävel ei ollut oikeassa muodossa")
                 return
             if eroteltu[1] not in nuottien_vastaavuudet.keys():
-                print("nuotti ei ollu oikeassa muodossa")
+                viestinakyma.nayta_viesti("nuotti ei ollu oikeassa muodossa")
                 return
             if len(eroteltu[0]) == 3:
                 if eroteltu[0][2] == "#" or eroteltu[0][2] == "b":
                     savelet.append(eroteltu[0])
                     nuotit.append(nuottien_vastaavuudet[eroteltu[1]])
                     continue
-                else:    
-                    print("Vääränlainen ylennys- tai alennusmerkki")
+                else:
+                    viestinakyma.nayta_viesti("Vääränlainen ylennys- tai alennusmerkki")    
                     return
 
             savelet.append(eroteltu[0])
@@ -61,7 +63,7 @@ class OpetusNakyma:
         opetusdata["savelet"].append(savelet)
         opetusdata["nuotit"].append(nuotit)
         tallennaJson(opetusdata)
-        print("kappale lisätty opetusdataan")
+        viestinakyma.nayta_viesti("kappale lisätty opetusdataan")
          
 
 

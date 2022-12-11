@@ -19,15 +19,9 @@ class TrieRakenne(object):
         if self.savelet_vai_nuotit == "sävelet":
             for s in data["savelet"]:
                 self.lisaa_kappale(s)
-            #self.lisaa_kappale(["C4","C4","G4","G4","A4","A4","G4","F4","F4","E4","E4","D4","D4","C4"])
-            #self.lisaa_kappale(["C4","C4","C4", "E4","D4","D4","D4", "F4","E4","E4","D4","D4","C4"])
-            #self.lisaa_kappale(["C4", "D4", "E4", "C4", "F4", "E4", "F4", "E4", "D4", "B3", "C4", "D4", "E4", "E4", "E4", "E4", "D4", "C4"])
         else:
             for n in data["nuotit"]:
                 self.lisaa_kappale(n)
-            #self.lisaa_kappale(["2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "1"])
-            #self.lisaa_kappale(["1", "1", "1", "1", "1", "1", "3", "1", "1", "1", "1", "1", "1", "3"])
-            #self.lisaa_kappale(["2", "2", "2", "2", "4", "2", "2", "2", "4", "2", "1", "1", "1", "2", "2", "2", "1", "4"])
 
 
     def lisaa_kappale(self, kappale):
