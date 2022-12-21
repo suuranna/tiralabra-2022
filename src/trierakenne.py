@@ -1,6 +1,7 @@
 import random
 from jsonFunktiot import *
 from solmu import Solmu
+from arpoja import Arpoja
 
 class TrieRakenne(object):
     """Luokka, joka kuvaa Trie-rakennetta
@@ -10,6 +11,7 @@ class TrieRakenne(object):
         savelet_vai_nuotit: String-muodossa joko "sävelet" tai "nuotit" kertomassa, 
             onko Trie-rakenteessa nuotteja vai säveliä
         pisin: pitää kirjaa siitä, mikä on opetusdatan pisin kappale ja pisin mahdollinen generoitava kappale
+        arpoja: hoitaa satumanvaraisen valinnan
     
     """
     def __init__(self, savelet_vai_nuotit):
@@ -23,6 +25,7 @@ class TrieRakenne(object):
         self.alku = Solmu("")
         self.savelet_vai_nuotit = savelet_vai_nuotit
         self.pisin = 0
+        self.arpoja = Arpoja()
         #self.alusta()
 
     def alusta(self):
@@ -103,14 +106,14 @@ class TrieRakenne(object):
             nimet.append(lapsi.nimi)
 
         while len(nimet) > 0:
-            arvottu_solmu = random.choices(nimet, weights=maarat)
+            arvottu_solmu = self.arpoja.arvo(nimet, maarat)
             for i in range(len(nimet)):
-                if nimet[i] == arvottu_solmu[0]:
+                if nimet[i] == arvottu_solmu:
                     nimet.pop(i)
                     maarat.pop(i)
                     break
 
-            a = self.generoi_kappale(solmu.lapset[arvottu_solmu[0]], kappale, min, max)
+            a = self.generoi_kappale(solmu.lapset[arvottu_solmu], kappale, min, max)
 
             if isinstance(a, int):
                 if a == -1:
