@@ -11,8 +11,7 @@ Dokumentaation kieli tulee olemaan suomi ja lisäksi projektin koodin ja komment
 
 
 Aion toteuttaa musiikkia tuottavan ohjelman, jolle annetaan opetusdatana valmiita kappaleita. 
-Ohjelma luo uuden kappaleen/musiikin ja soittaa sen. Ehkäpä käyttäjä voisi jotenkin vaikuttaa, minkälaisen kappaleen ohjelma tuottaa, 
-esim. käyttäjä voisi valita kappaleen keston.
+Ohjelma luo uuden kappaleen/musiikin ja soittaa sen.
 Aion hyödyntää Markovin ketjua ja trie-tietorakennetta. Markovin ketjun avulla voidaan luoda uutta musiikkia, sillä sen avulla ohjelma valitsee aina seuraavan sävelen. Trie-tietorakenteen avulla voi tallentaa sävelsekvenssejä.
 
 
@@ -22,3 +21,8 @@ Trie-tietorakenteen tilavaativuus on O(n). Aikavaativuutta on vaikea sanoa täss
 
 
 ## Lähteet:
+
+
+Opetusdatana käytettyjen kappaleiden nuotit: https://musescore.org/fi
+
+Opetusdatana käyetyt kappaleet:
