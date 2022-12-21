@@ -1,4 +1,3 @@
-import random
 from jsonFunktiot import *
 from solmu import Solmu
 from arpoja import Arpoja

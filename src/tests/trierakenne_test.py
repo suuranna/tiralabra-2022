@@ -1,6 +1,6 @@
 import unittest
-from trierakenne import *
-from jsonFunktiot import *
+from trierakenne import TrieRakenne
+from jsonFunktiot import avaaJson
 from solmu import Solmu
 
 class TestTrierakenne(unittest.TestCase):
@@ -75,15 +75,15 @@ class TestTrierakenne(unittest.TestCase):
         kappale = self.trie.luo_kappale(5, 5)
         self.assertTrue(isinstance(kappale, list))
 
-        
+    def test_luo_kappale_palauttaa_none_jos_min_ja_max_on_virheelliset(self):
+        kappale = self.trie.luo_kappale(1, 100000000)
+        self.assertEqual(kappale, None)
+        kappale = self.trie.luo_kappale(100000000, 100000000)
+        self.assertEqual(kappale, None)
+        kappale = self.trie.luo_kappale(1000, 1)
+        self.assertEqual(kappale, None)
+        kappale = self.trie.luo_kappale(-1, 20)
+        self.assertEqual(kappale, None)
+        kappale = self.trie.luo_kappale(1, -100000)
+        self.assertEqual(kappale, None)
 
-class TestSolmu(unittest.TestCase):
-    def setUp(self):
-        pass
-
-    def test_solmun_luonti(self):
-        solmu = Solmu("C4")
-        self.assertEqual(solmu.nimi, "C4")
-        self.assertEqual(len(list(solmu.lapset.keys())), 0)
-        self.assertEqual(solmu.maara, 1)
-        self.assertEqual(solmu.kappaleen_loppu, False)
