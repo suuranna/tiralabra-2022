@@ -1,7 +1,6 @@
 import unittest
 from trierakenne import TrieRakenne
 from jsonFunktiot import avaaJson
-from solmu import Solmu
 
 class TestTrierakenne(unittest.TestCase):
     def setUp(self):

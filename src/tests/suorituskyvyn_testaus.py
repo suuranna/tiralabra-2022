@@ -40,7 +40,7 @@ class Suorituskykytestaus:
         aikaAlussa = time.time()
         for i in range(kappaleiden_maara):
             kappale = self.trie.luo_kappale(min, max)
-            print(kappale)
+            #print(kappale)
         aikaLopussa = time.time()
         print("Aikaa kului kappaleen generoitiin: " + str(aikaLopussa - aikaAlussa) + " sekunttia, kun min oli " + str(min) + " ja max oli " + str(max) + " ja kappaleita generoitiin " + str(kappaleiden_maara))
 
@@ -49,12 +49,12 @@ def main():
     #2000-10000 on liian iso pituus kappaleelle, vaikka kappaleita olisikin vain 10
     #1 000 000 kappaletta on ehkä vähän liikaa vaikka kappaleiden pituus olisi vain 10 (69 sekunttia)
     #mitä enemmän opetusdataa trie-rakenteessa on sitä kauemmin uuden kappaleen lisääminen kestää
-    #uuden kappaleen generoiminen kestää myös kauemmin mitä enemmän solmuja triessä on
+    #uuden kappaleen generoiminen kestää myös kauemmin mitä enemmän kappaleita on lisättye trieen
     skt = Suorituskykytestaus()
-    #skt.datan_lisaaminen_trieen(1, 3000)
-    #skt.datan_lisaaminen_trieen(1000, 100)
+    skt.datan_lisaaminen_trieen(1, 3000)
+    skt.datan_lisaaminen_trieen(1000, 100)
     skt.datan_lisaaminen_trieen(25, 40)
-    skt.kappaleen_generointi_isolla_maaralla_opetusdataa(40, 40, 20)
+    skt.kappaleen_generointi_isolla_maaralla_opetusdataa(20, 20, 500000)
     skt.datan_lisaaminen_trieen(1, 100)
     #skt.datan_lisaaminen_trieen(1000000, 10)
     skt.datan_lisaaminen_trieen(1, 100)
@@ -79,7 +79,7 @@ def main():
     #tähän tyssää
     #skt.datan_lisaaminen_trieen(1, 3000)
     skt.datan_lisaaminen_trieen(1, 100)
-    skt.kappaleen_generointi_isolla_maaralla_opetusdataa(10, 10, 100)
+    skt.kappaleen_generointi_isolla_maaralla_opetusdataa(20, 20, 1)
     return
 
 if __name__ == "__main__":

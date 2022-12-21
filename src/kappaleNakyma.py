@@ -1,6 +1,5 @@
-from tkinter import ttk, constants
+from tkinter import ttk, constants, Text
 from kappaleen_soittaminen import soita_kappale
-from trierakenne import *
 from viestinakyma import Viestinakyma
 
 class KappaleNakyma:
@@ -84,6 +83,9 @@ class KappaleNakyma:
         """
         self.kehys = ttk.Frame(master=self.juuri)
         otsikko = ttk.Label(master=self.kehys, text="Generoitu kappale on tässä")
+        teksti = Text(master=self.kehys, height=5, width=60)
+        teksti.insert('1.0', "Tässä voit kuunnella juuri generoidun kappaleen haluamassasi tempossa tai sitten generoida uuden kappaleen. Kirjoita haluamasi tempo numeromuodossa. Mitä suurempi tempo, sitä nopeampaa kappale soitetaan")
+        teksti['state'] = 'disabled'
         self.tempo = ttk.Entry(master=self.kehys)
         self.tempo.insert(0, "120")
 
@@ -95,6 +97,7 @@ class KappaleNakyma:
         generoi_uusi = ttk.Button(master=self.kehys, text="generoi uusi kappale", command=self.generoi_uusi_kappale)
         etusivulle = ttk.Button(master=self.kehys, text="siirry takaisin etusivulle", command=self.takaisin_etusivulle)
         otsikko.pack()
+        teksti.pack()
         self.tempo.pack()
         soita.pack()
         generoi_uusi.pack()
