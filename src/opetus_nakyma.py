@@ -1,10 +1,29 @@
 from tkinter import ttk, constants, Text
-from trierakenne import *
-from jsonFunktiot import *
 from viestinakyma import Viestinakyma
+from opetusdataan_datan_lisaaminen import lisaa_opetusdataan_kappale
 
 class OpetusNakyma:
+    """Luokka, joka kuvaa opetusnäkymään, jossa voi lisätä kirjoittamansa kappaleen opetusdataan
+
+    Attributes:
+        juuri: juurikomponentti
+        kehys: komponentti, jonka avulla tämän näkymän komponentit pysyvät vain tässä näkymässä
+        savelet: Trierakenne, joka koostuu opetusdatan sävelsekvensseistä 
+        nuotit: Trierakenne, joka koostuu opetusdatan nuottisekvensseistä
+        takaisin_etusivulle: napin tapahtumakäsittelijä, jolla pääsee takaisin etusivulle
+        data = tekstikenttään kirjoitettu kappale
+    
+    """
     def __init__(self, juuri, takaisin_etusivulle, savelet, nuotit):
+        """Luokan konstruktori, joka luo uuden opetusnäkymän
+
+        Args:
+            juuri: juurikomponentti
+            savelet: Trierakenne, joka koostuu opetusdatan sävelsekvensseistä 
+            nuotit: Trierakenne, joka koostuu opetusdatan nuottisekvensseistä
+            takaisin_etusivulle: napin tapahtumakäsittelijä, jolla pääsee takaisin etusivulle
+
+        """
         self._juuri = juuri
         self._kehys = None
         self._savelet = savelet
@@ -15,59 +34,42 @@ class OpetusNakyma:
         self.alusta()
 
     def pakkaa(self):
+        """Metodi, joka pakkaa näkymän visuaaliset komponentit 
+        
+        """
         self._kehys.pack(fill=constants.X)
 
     def tuhoa(self):
+        """Tuhoaa opetusnäkymän, jotta toinen näkymän voidaan laittaa tilalle
+        
+        """
         self._kehys.destroy()
 
     def lisaa_kappale_opetusdataan(self):
+        """Lisää opetusdataan -napin tapahtumakäsittelijä, joka lisää kirjoitetun data.json-tiedostoon
+        ja trierakenteisiin
+        
+        """
         viestinakyma = Viestinakyma()
-        nuottien_vastaavuudet = {"1/4": "1", "1/8": "2", "1/2": "3", "3/8": "4", "1/16": "5", "1": "6", "3/16": "7"}
-        sallitut_savelet = ["C", "D", "E", "F", "G", "A", "H", "B"]
-        sallitut_oktaavit = ["3", "4", "5"]
         data = self._data.get("1.0", 'end-1c')
-        lista = data.split()
-        savelet = []
-        nuotit = []
 
-        opetusdata = avaaJson()
+        savelet_ja_nuotit = lisaa_opetusdataan_kappale(data)
 
-        if len(lista) <= 1:
-            viestinakyma.nayta_viesti("Anna kappale, joka on pidempi kuin yksi nuotti/sävel")
-            return 
+        if isinstance(savelet_ja_nuotit, str):
+            viestinakyma.nayta_viesti(savelet_ja_nuotit)
+            return
+        
+        if isinstance(savelet_ja_nuotit, tuple):
+            self._savelet.lisaa_kappale(savelet_ja_nuotit[0])
+            self._nuotit.lisaa_kappale(savelet_ja_nuotit[1])
 
-        for alkio in lista:
-            eroteltu = alkio.split("-")
-            if len(eroteltu) != 2 or len(eroteltu[0]) < 2 or len(eroteltu[0]) > 3:
-                viestinakyma.nayta_viesti("Annettu kappale ei ollut kirjoitettu oikeassa muodossa")
-                return
-            if eroteltu[0][0] not in sallitut_savelet and eroteltu[0][1] not in sallitut_oktaavit:
-                viestinakyma.nayta_viesti("sävel ei ollut oikeassa muodossa")
-                return
-            if eroteltu[1] not in nuottien_vastaavuudet.keys():
-                viestinakyma.nayta_viesti("nuotti ei ollu oikeassa muodossa")
-                return
-            if len(eroteltu[0]) == 3:
-                if eroteltu[0][2] == "#" or eroteltu[0][2] == "b":
-                    savelet.append(eroteltu[0])
-                    nuotit.append(nuottien_vastaavuudet[eroteltu[1]])
-                    continue
-                else:
-                    viestinakyma.nayta_viesti("Vääränlainen ylennys- tai alennusmerkki")    
-                    return
-
-            savelet.append(eroteltu[0])
-            nuotit.append(nuottien_vastaavuudet[eroteltu[1]])
-        self._savelet.lisaa_kappale(savelet)
-        self._nuotit.lisaa_kappale(nuotit)
-        opetusdata["savelet"].append(savelet)
-        opetusdata["nuotit"].append(nuotit)
-        tallennaJson(opetusdata)
         viestinakyma.nayta_viesti("kappale lisätty opetusdataan")
-         
 
 
     def alusta(self):
+        """Alustaa opetusnäkymän ja luo sen visuaaliset komponentit
+        
+        """
         self._kehys = ttk.Frame(master=self._juuri)
         otsikko = ttk.Label(master=self._kehys, text="Lisää opetusdataa")
         self._data = Text(master=self._kehys, height=4, width=40)

@@ -4,56 +4,100 @@ from trierakenne import *
 from viestinakyma import Viestinakyma
 
 class KappaleNakyma:
-    def __init__(self, juuri, takaisin_etusivulle, nuotit, savelet): 
-        self._juuri = juuri
-        self._kehys = None
-        self._takaisin_etusivulle = takaisin_etusivulle
-        self._savelet = savelet 
-        self._nuotit = nuotit 
-        self._tempo = None
-        self._kappale = None
+    """Luokka, joka kuvaa näkymää, jossa voi kuunnella generoidun kappaleen haluamssaan 
+    tempossa ja generoida uuden kappaleen
 
-        self._alusta()
+    Attributes:
+        juuri: juurikomponentti
+        kehys: komponentti, jonka avulla tämän näkymän komponentit pysyvät vain tässä näkymässä
+        takaisin_etusivulle: napin tapahtumakäsittelijä, jolla pääsee takaisin etusivulle
+        savelet: Trierakenne, joka koostuu opetusdatan sävelsekvensseistä 
+        nuotit: Trierakenne, joka koostuu opetusdatan nuottisekvensseistä
+        tempo: tekstikenttään kirjoitettu tempo
+        kappale: generoidun kappaleen sävelet ja nuotit tuplena
+    
+    """
+
+    def __init__(self, juuri, takaisin_etusivulle, nuotit, savelet):
+        """Luokan konstruktori, joka luo uuden kappalenäkymän
+
+        Args:
+            juuri: juurikomponentti
+            takaisin_etusivulle: napin tapahtumakäsittelijä, jolla pääsee takaisin etusivulle
+            savelet: Trierakenne, joka koostuu opetusdatan sävelsekvensseistä 
+            nuotit: Trierakenne, joka koostuu opetusdatan nuottisekvensseistä
+
+        """ 
+        self.juuri = juuri
+        self.kehys = None
+        self.takaisin_etusivulle = takaisin_etusivulle
+        self.savelet = savelet 
+        self.nuotit = nuotit 
+        self.tempo = None
+        self.kappale = None
+
+        self.alusta()
 
     def pakkaa(self):
-        self._kehys.pack(fill=constants.X)
+        """Metodi, joka pakkaa näkymän visuaaliset komponentit 
+        
+        """
+        self.kehys.pack(fill=constants.X)
 
     def tuhoa(self):
-        self._kehys.destroy()
+        """Tuhoaa kappalenäkymän, jotta toinen näkymän voidaan laittaa tilalle
+        
+        """
+        self.kehys.destroy()
 
     def soita_generoitu_kappale(self):
+        """Soita generoitu kappale -napin tapahtumakäsittelijä, joka soittaa generoidun kappaleen 
+        halutussa tempossa
+        
+        """
         viestinakyma = Viestinakyma()
-        tempo = self._tempo.get()
-        try:
-            tempo = int(tempo)
-        except:
-            viestinakyma.nayta_viesti("Kirjoita jokin nollaa suurempi kokonaisluku numeromuodossa esim. 60")
-            #print("Kirjoita jokin nollaa suurempi kokonaisluku numeromuodossa esim. 60")
+        tempo = self.tempo.get()
+        
+        soita = soita_kappale(self.kappale[0], self.kappale[1], tempo)
+        if isinstance(soita, str):
+            viestinakyma.nayta_viesti(soita)
             return
-        if tempo > 0:
-            soita_kappale(self._kappale[0], self._kappale[1], tempo)
-            #viestinakyma.tuhoa()
-        else:
-            viestinakyma.nayta_viesti("Kirjoita jokin nollaa suurempi kokonaisluku numeromuodossa esim. 60")
-            #print("Kirjoita jokin nollaa suurempi kokonaisluku numeromuodossa esim. 60")
+
         viestinakyma.tuhoa()
 
+    def generoi_uusi_kappale(self):
+        """Generoi uusi kappale -napin tapahtumakäsittelijä, joka generoi uuden kappaleen
+        
+        """
+        viestinakyma = Viestinakyma()
+
+        savelet = self.savelet.luo_kappale(10,20)
+        nuotit = self.nuotit.luo_kappale(len(savelet), len(savelet))
+        self.kappale = (savelet, nuotit)
+
+        viestinakyma.nayta_viesti("Uusi kappale on onnistuneesti generoitu! Kuuntele se painamalla 'soita generoitu kappale'-nappia")    
+
             
-    def _alusta(self):
-        self._kehys = ttk.Frame(master=self._juuri)
-        otsikko = ttk.Label(master=self._kehys, text="Generoitu kappale on tässä")
-        self._tempo = ttk.Entry(master=self._kehys)
-        self._tempo.insert(0, "120")
+    def alusta(self):
+        """Alustaa kappalenäkymän ja luo tarvittavat visuaaliset komponentit
+        
+        """
+        self.kehys = ttk.Frame(master=self.juuri)
+        otsikko = ttk.Label(master=self.kehys, text="Generoitu kappale on tässä")
+        self.tempo = ttk.Entry(master=self.kehys)
+        self.tempo.insert(0, "120")
 
-        savelet = self._savelet.luo_kappale(9,20)
-        nuotit = self._nuotit.luo_kappale(len(savelet), len(savelet))
-        self._kappale = (savelet, nuotit)
+        savelet = self.savelet.luo_kappale(10,20)
+        nuotit = self.nuotit.luo_kappale(len(savelet), len(savelet))
+        self.kappale = (savelet, nuotit)
 
-        soita = ttk.Button(master=self._kehys, text="soita generoitu kappale", command=self.soita_generoitu_kappale)
-        etusivulle = ttk.Button(master=self._kehys, text="etusivulle", command=self._takaisin_etusivulle)
+        soita = ttk.Button(master=self.kehys, text="soita generoitu kappale", command=self.soita_generoitu_kappale)
+        generoi_uusi = ttk.Button(master=self.kehys, text="generoi uusi kappale", command=self.generoi_uusi_kappale)
+        etusivulle = ttk.Button(master=self.kehys, text="siirry takaisin etusivulle", command=self.takaisin_etusivulle)
         otsikko.pack()
-        self._tempo.pack()
+        self.tempo.pack()
         soita.pack()
+        generoi_uusi.pack()
         etusivulle.pack()
 
 

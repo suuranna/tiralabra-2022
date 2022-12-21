@@ -1,9 +1,12 @@
 import unittest
 from kappaleen_soittaminen import *
 
-class TestKappaleen_luonti(unittest.TestCase):
+class Test_kappaleen_luonti(unittest.TestCase):
     def setUp(self):
-        print("testi")
+        pass
 
-    def test_testitesti(self):
-        self.assertEqual(25, 25)
+    def test_soittaja(self):
+        soittaja = Soittaja()
+
+        soittaja.soita("C4", 1)
+        #self.assertEqual(soittaja is kappaleen_soittaminen.Soittaja, True)
