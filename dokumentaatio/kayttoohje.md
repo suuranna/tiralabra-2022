@@ -14,7 +14,7 @@ Testit voi suorittaa komennolla `poetry run pytest src`
 
 Pelkistetyn estikattavuusraportin saa komennolla
 
-`poetry run coverage report -m`
+`poetry run coverage report`
 
 ja visuaallisemman testikattavuusraportin saa luotua komennolla
 `poetry run coverage html`
@@ -24,13 +24,13 @@ visuaalisen testikattavuusrapotin selaimeen.
 
 ## Miten sovellusta käytetään?
 
-Sovelluksen käynnistäessa aukeaa etusivunäkymä, jos nappia painamlla voi joko generoida uuden kappaleen ja siirtyä kuuntelemaan sitä toiseen näkymään tai sitten siirtyä näkymään, jossa voi lisätä kappaleen opetusdataan.
+Sovelluksen käynnistäessa aukeaa etusivunäkymä, jossa nappia painamlla voi joko generoida uuden kappaleen ja siirtyä kuuntelemaan sitä toiseen näkymään tai sitten siirtyä näkymään, jossa voi lisätä kappaleen opetusdataan.
 
 
 Opetusdataan voi lisätä kappaleita, ja ajatuksena on, että kappaleet lisätään peräkkäisinä sävel-nuotti yhdisteinä. 
 Esimerkiksi "C4-1/4 D5-1/8 E4-1/2", jossa C4 on C-sävel neljänneltä oktaavilta ja 1/4 tarkoittaa neljännesosanuottia jne.
 (1/4=neljäsosanuotti, 1/8=kahdeksasosanuotti, 1/2=puolinuotti, 3/8=pisteellinen neljännesosanuotti,
-1=kokonuotti, 1/16=kuudestoistaosanuotti) Nuotit määrittelevät sävelen keston.
+1=kokonuotti, 1/16=kuudestoistaosanuotti) Nuotit määrittelevät sävelen keston. Mitä suurempi nuotin aika-arvo on, sen pidempää säveltä soitetaan.
 
 
 Generoidun kappaleen voi kuunnella haluamassaa tempossa. Generoitu kappale on tällä hetkellä
