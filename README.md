@@ -1,4 +1,6 @@
-# tiralabra-2022
+# Musiikintuottaja
+
+Tämä harjoitustyö on toteutettu Tietorakenteet ja algoritmit harjoitustyö -kurssilla.
 
 [Sovelluksen käyttöohje](https://github.com/suuranna/tiralabra-2022/blob/main/dokumentaatio/kayttoohje.md)
 
