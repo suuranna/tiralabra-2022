@@ -50,17 +50,18 @@ jossa X on jokin sävel (säveliä ovat C, D, E, F, G, A, H, B), Y on oktaavi (e
 
 Esimerkiksi: "C4-1/4 D5-1/8 E4-1/2 tai "C4-1/8 D4-1/8 E4-1/8 F4-1/8 G4-1/4 G4-1/4 A4-1/4 A4-1/4 G4-1/2 A4-1/4 A4-1/4 G4-1/2".
 
-Sovellus tukee myös ylennettyjä ja alennettuja säveliä.
+Sovellus tukee myös ylennettyjä ja alennettuja säveliä. Sävelen saa ylennettyä lisäämällä sävelen perään #-merkin ja sävelen saa alennettua lisäämällä sävelen perään b-merkin.
 
 Esimerkiksi "C4#-1/4" on ylennetty C-sävel ja "D4b-1/4" on alennettu D-sävel
 
 
 ### Kappalenäkymä:
 
-(lisää kuva opetusnäkymästä)
+(lisää kuva kappalenäkymästä)
 
-Kappalenäkymässä generoidun kappaleen voi kuunnella haluamassaa tempossa. Mitä suurempi tempo, sitä nopeampaa generoitu kappale soitetaan. Generoitu kappale on tällä hetkellä
-10-20 säveltä/nuottia pitkä. Koska sovelluksessa ei ole määritelty ennalta mitään astetta Markovin ketjulle, ottaa kappaleen generointi kaikki edelliset sävelet/nuotit huomioon generoidessa uutta kappaletta, minkä takia lopputulos muistuttaa usein jotakin opetusdatassa olevaa kappaletta.
+Kappalenäkymässä generoidun kappaleen voi kuunnella haluamassaa tempossa. Mitä suurempi tempo, sitä nopeampaa generoitu kappale soitetaan. Generoitu kappale on tällä hetkellä 10-20 säveltä/nuottia pitkä. Koska sovelluksessa ei ole määritelty ennalta mitään astetta Markovin ketjulle, ottaa kappaleen generointi kaikki edelliset sävelet/nuotit huomioon generoidessa uutta kappaletta, minkä takia lopputulos muistuttaa usein jotakin opetusdatassa olevaa kappaletta.
+
+Kappalenäkymässä voi myös generoida uuden kappaleen.
 
 ja opetusdataan on lisätty vain Tuiki tuiki tähtönen, Ukko-Nooa ja 
 Lady Gagan Bad romancesta pieni osa, joten generoitu kappale ei vielä ole mitenkään tajunnan räjäyttävä ja 
