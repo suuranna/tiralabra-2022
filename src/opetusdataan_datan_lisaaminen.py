@@ -1,7 +1,8 @@
 from jsonFunktiot import avaaJson, tallennaJson
+from syotetyn_kappaleen_tarkistus import syotetyn_kappaleen_tarkistus
 
 def lisaa_opetusdataan_kappale(kappale):
-    """Metodi, joka tarkistaa, että annettu kappale on oikeassa muodossa ja
+    """Metodi, joka ensin tarkistaa toisella metodilla, että annettu kappale on oikeassa muodossa, ja
     lisää sitten sen data.json-tiedostoon
 
     Args:
@@ -13,9 +14,11 @@ def lisaa_opetusdataan_kappale(kappale):
         palautetaan tuple, jossa on listana kirjoitetun kappaleen sävelet ja toisena listana nuotit
     
     """
-    nuottien_vastaavuudet = {"1/4": "1", "1/8": "2", "1/2": "3", "3/8": "4", "1/16": "5", "1": "6", "3/16": "7"}
-    sallitut_savelet = ["C", "D", "E", "F", "G", "A", "H", "B"]
-    sallitut_oktaavit = ["3", "4", "5"]
+    tarkistettu_kappale = syotetyn_kappaleen_tarkistus(kappale)
+
+    if isinstance(tarkistettu_kappale, str):
+        return tarkistettu_kappale
+
 
     lista = kappale.split()
     savelet = []
@@ -23,32 +26,15 @@ def lisaa_opetusdataan_kappale(kappale):
 
     opetusdata = avaaJson()
 
-    if len(lista) <= 1:
-        return "Anna kappale, joka on pidempi kuin yksi nuotti/sävel" 
-
     for alkio in lista:
         eroteltu = alkio.split("-")
-        if len(eroteltu) != 2 or len(eroteltu[0]) < 2 or len(eroteltu[0]) > 3:
-            return "Annettu kappale ei ollut kirjoitettu oikeassa muodossa"
-            
-        if eroteltu[0][0] not in sallitut_savelet and eroteltu[0][1] not in sallitut_oktaavit:
-            return "sävel ei ollut oikeassa muodossa"
-    
-        if eroteltu[1] not in nuottien_vastaavuudet.keys():
-            return "nuotti ei ollu oikeassa muodossa"
-            
-        if len(eroteltu[0]) == 3:
-            if eroteltu[0][2] == "#" or eroteltu[0][2] == "b":
-                savelet.append(eroteltu[0])
-                nuotit.append(nuottien_vastaavuudet[eroteltu[1]])
-                continue
-            else:
-                return "Vääränlainen ylennys- tai alennusmerkki"
-
+ 
         savelet.append(eroteltu[0])
-        nuotit.append(nuottien_vastaavuudet[eroteltu[1]])
+        nuotit.append(eroteltu[1])
 
     opetusdata["savelet"].append(savelet)
     opetusdata["nuotit"].append(nuotit)
+
     tallennaJson(opetusdata)
+
     return (savelet, nuotit)

@@ -14,7 +14,7 @@ def soita_kappale(savelet, nuotit, tempo):
         
     """
     soittaja = Soittaja()
-    nuottien_kestot = {"1": 60, "2": 30, "3": 120, "4": 90, "5": 15, "6": 240, "7": 45}
+    nuottien_kestot = {"1/4": 60, "1/8": 30, "1/2": 120, "3/8": 90, "1/16": 15, "1": 240, "3/16": 45}
 
     try:
         tempo = int(tempo)
