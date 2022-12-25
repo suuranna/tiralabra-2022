@@ -2,7 +2,7 @@ from tkinter import ttk, constants, Text
 from kappaleen_soittaminen import soita_kappale
 from viestinakyma import Viestinakyma
 
-class KappaleNakyma:
+class Kappalenakyma:
     """Luokka, joka kuvaa näkymää, jossa voi kuunnella generoidun kappaleen haluamssaan 
     tempossa ja generoida uuden kappaleen
 

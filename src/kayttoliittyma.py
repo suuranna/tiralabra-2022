@@ -1,10 +1,7 @@
-from tkinter import Tk, ttk
-from aloitusNakyma import AloitusNakyma
-from kappaleNakyma import KappaleNakyma
-from opetus_nakyma import OpetusNakyma
-from kappaleen_soittaminen import *
-from jsonFunktiot import *
-from trierakenne import *
+from aloitusnakyma import Aloitusnakyma
+from kappalenakyma import Kappalenakyma
+from opetusnakyma import Opetusnakyma
+from trierakenne import TrieRakenne
 
 class KL:
     """Luokka, joka vastaa käyttöliittymää
@@ -71,7 +68,7 @@ class KL:
         
         """  
         self.piilota_nakyma()
-        self.nakymaNyt = OpetusNakyma(self.juuri, self.siirry_etusivulle, self.savelet, self.nuotit)
+        self.nakymaNyt = Opetusnakyma(self.juuri, self.siirry_etusivulle, self.savelet, self.nuotit)
         self.nakymaNyt.pakkaa()
 
     def nayta_generoitu_kappale(self):
@@ -79,7 +76,7 @@ class KL:
 
         """
         self.piilota_nakyma()
-        self.nakymaNyt = KappaleNakyma(self.juuri, self.siirry_etusivulle, self.nuotit, self.savelet)
+        self.nakymaNyt = Kappalenakyma(self.juuri, self.siirry_etusivulle, self.nuotit, self.savelet)
         self.nakymaNyt.pakkaa()
 
     def nayta_etusivu(self):
@@ -87,6 +84,6 @@ class KL:
 
         """
         self.piilota_nakyma()
-        self.nakymaNyt = AloitusNakyma(self.juuri, self.siirry_kappalenakymaan, self.siirry_opetusdatan_lisaamiseen)
+        self.nakymaNyt = Aloitusnakyma(self.juuri, self.siirry_kappalenakymaan, self.siirry_opetusdatan_lisaamiseen)
         self.nakymaNyt.pakkaa()
 

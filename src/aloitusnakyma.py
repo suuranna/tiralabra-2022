@@ -1,6 +1,6 @@
 from tkinter import ttk, constants, Text
 
-class AloitusNakyma:
+class Aloitusnakyma:
     """Luokka, joka kuvaa aloitusnäkymää eli etusivua, joka aukeaa ensimmäisenä, kun sovelluksen käynnistää
 
     Attributes:

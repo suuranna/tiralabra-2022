@@ -1,6 +1,6 @@
 import unittest
 from trierakenne import TrieRakenne
-from jsonFunktiot import avaaJson
+from json_funktiot import avaaJson
 
 class TestTrierakenne(unittest.TestCase):
     def setUp(self):

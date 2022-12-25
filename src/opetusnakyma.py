@@ -2,7 +2,7 @@ from tkinter import ttk, constants, Text
 from viestinakyma import Viestinakyma
 from opetusdataan_datan_lisaaminen import lisaa_opetusdataan_kappale
 
-class OpetusNakyma:
+class Opetusnakyma:
     """Luokka, joka kuvaa opetusnäkymään, jossa voi lisätä kirjoittamansa kappaleen opetusdataan
 
     Attributes:
