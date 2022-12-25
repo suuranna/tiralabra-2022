@@ -70,7 +70,7 @@ class Kappalenakyma:
         """
         viestinakyma = Viestinakyma()
 
-        savelet = self.savelet.luo_kappale(10,20)
+        savelet = self.savelet.luo_kappale(15,25)
         nuotit = self.nuotit.luo_kappale(len(savelet), len(savelet))
         self.kappale = (savelet, nuotit)
 
@@ -89,7 +89,7 @@ class Kappalenakyma:
         self.tempo = ttk.Entry(master=self.kehys)
         self.tempo.insert(0, "120")
 
-        savelet = self.savelet.luo_kappale(10,20)
+        savelet = self.savelet.luo_kappale(15,25)
         nuotit = self.nuotit.luo_kappale(len(savelet), len(savelet))
         self.kappale = (savelet, nuotit)
 

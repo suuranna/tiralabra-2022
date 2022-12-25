@@ -1,4 +1,4 @@
-from jsonFunktiot import *
+from json_funktiot import avaaJson
 from solmu import Solmu
 from arpoja import Arpoja
 
@@ -56,13 +56,21 @@ class TrieRakenne(object):
             solmu = self.alku
             i = indeksi
             while i < len(kappale):
-                if kappale[i] in solmu.lapset:
+                try:
                     solmu.lapset[kappale[i]].maara += 1
                     solmu = solmu.lapset[kappale[i]]
-                else:
+                except:
                     uusi_solmu = Solmu(kappale[i])
                     solmu.lapset[kappale[i]] = uusi_solmu
                     solmu = uusi_solmu
+
+                #if kappale[i] in solmu.lapset:
+                #    solmu.lapset[kappale[i]].maara += 1
+                #    solmu = solmu.lapset[kappale[i]]
+                #else:
+                #    uusi_solmu = Solmu(kappale[i])
+                #    solmu.lapset[kappale[i]] = uusi_solmu
+                #    solmu = uusi_solmu
                 i += 1
             solmu.kappaleen_loppu = True
 
@@ -82,13 +90,14 @@ class TrieRakenne(object):
             listana sävelet/soinnut, jos on löydetty pituusvaatimuksia vastaava kappale
 
         """
-        if min < 0 or max < min or max < 0 or max > self.pisin or min > self.pisin:
+        if min < 1 or max < min or max < 0 or max > self.pisin or min > self.pisin:
             return 
 
         if solmu.nimi != "":
             kappale.append(solmu.nimi)
         
-        if len(kappale) > max:
+        if len(kappale) == max and not solmu.kappaleen_loppu:
+            kappale.pop()
             return -1 
 
         if solmu.kappaleen_loppu:
@@ -111,20 +120,19 @@ class TrieRakenne(object):
                     nimet.pop(i)
                     maarat.pop(i)
                     break
+            generoitu_kappale = self.generoi_kappale(solmu.lapset[arvottu_solmu], kappale, min, max)
 
-            a = self.generoi_kappale(solmu.lapset[arvottu_solmu], kappale, min, max)
-
-            if isinstance(a, int):
-                if a == -1:
-                    kappale.pop()
+            if isinstance(generoitu_kappale, int):
+                if generoitu_kappale == -1:
                     break
-                if a == -2:
+                if generoitu_kappale == -2:
                     continue
-            if isinstance(a, list):
-                return a
-            
-        if len(kappale) > 0:
-            kappale.pop()
+            if isinstance(generoitu_kappale, list):
+                return generoitu_kappale
+            if len(lapset) == 0:
+                kappale.pop()
+                break
+ 
         return 
 
 
@@ -142,12 +150,11 @@ class TrieRakenne(object):
 
         
         """
-        if min < 0 or max < min or max < 0 or max > self.pisin or min > self.pisin:
+        if min < 1 or max < min or max < 0 or max > self.pisin or min > self.pisin:
             return 
         kappale = []
         while True:
             kappale = self.generoi_kappale(self.alku, [], min, max)
             if kappale:
                 break
-
         return kappale

@@ -1,4 +1,4 @@
-from jsonFunktiot import avaaJson, tallennaJson
+from json_funktiot import avaaJson, tallennaJson
 from syotetyn_kappaleen_tarkistus import syotetyn_kappaleen_tarkistus
 
 def lisaa_opetusdataan_kappale(kappale):

@@ -66,7 +66,7 @@ class TestTrierakenne(unittest.TestCase):
     def test_generoidun_kappaleen_pituus_on_0_ja_pisimmän_opetuskappaleen_pituuden_välistä(self):
         pisin = self.trie2.pisin
         
-        for i in range(1, pisin):
+        for i in range(1, pisin + 1):
             kappale = self.trie2.luo_kappale(i, i)
             self.assertEqual(len(kappale), i)
 

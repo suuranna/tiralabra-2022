@@ -1,5 +1,5 @@
 import unittest
-from jsonFunktiot import *
+from json_funktiot import avaaJson, tallennaJson
 
 class TestKappaleen_luonti(unittest.TestCase):
     def setUp(self):
