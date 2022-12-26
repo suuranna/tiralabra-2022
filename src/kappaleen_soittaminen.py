@@ -1,7 +1,7 @@
 from soittaja import Soittaja
 
 def soita_kappale(savelet, nuotit, tempo):
-    """Metodi, joka soittaa annetun kappaleen halutussa tempossa, jos
+    """Funktio, joka soittaa annetun kappaleen halutussa tempossa, jos
     tempo on positiivinen kokonaisluku
 
     Args:

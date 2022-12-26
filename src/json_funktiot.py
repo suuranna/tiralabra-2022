@@ -1,8 +1,8 @@
 import json
 
 def avaa_json():
-    """Avaa tiedoston data.json, joka sisältää kappaleiden säveliä ja nuotteja,
-    ja muuttaa sen sisällön pythonin ymmärtämäksi dictionaryksi
+    """Funktio, joka avaa tiedoston data.json, joka sisältää kappaleiden säveliä
+    ja nuotteja, ja muuttaa sen sisällön pythonin ymmärtämäksi dictionaryksi
 
     Returns:
         data.json-tiedoston sisältämä dictionary sävelistä ja nuoteista pythonin
@@ -13,7 +13,7 @@ def avaa_json():
         return arvo
 
 def tallenna_json(tallennettava):
-    """Tallentaa data.json-tiedostoon annetun dictionaryn
+    """Funktio, joka tallentaa data.json-tiedostoon annetun dictionaryn
 
     Args:
         tallennettava: python-muodossa oleva dictionary, joka halutaan talettaa

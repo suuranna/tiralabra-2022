@@ -3,7 +3,7 @@ from nakyma import Nakyma
 
 class Aloitusnakyma(Nakyma):
     """Luokka, joka kuvaa aloitusnäkymää eli etusivua, joka aukeaa ensimmäisenä,
-    kun sovelluksen käynnistää
+    kun sovelluksen käynnistää, ja jonka yläluokka on luokka Nakyma
 
     Attributes:
         juuri: juurikomponentti

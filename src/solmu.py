@@ -8,6 +8,8 @@ class Solmu:
         maara: kuvaa montako kertaa kyseinen solmu on tullut vastaan
     """
     def __init__(self, nimi):
+        """Luokan konstruktori, joka luo uuden solmun
+        """
         self.nimi = nimi
         self.kappaleen_loppu = False
         self.lapset = {}

@@ -5,7 +5,7 @@ from nakyma import Nakyma
 
 class Kappalenakyma(Nakyma):
     """Luokka, joka kuvaa näkymää, jossa voi kuunnella generoidun kappaleen haluamssaan
-    tempossa ja generoida uuden kappaleen
+    tempossa ja generoida uuden kappaleen. Tämän luokan yläluokka on luokka Nakyma
 
     Attributes:
         juuri: juurikomponentti

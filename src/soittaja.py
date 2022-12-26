@@ -2,6 +2,9 @@ import musicalbeeps
 
 class Soittaja:
     """Luokka, joka kuvaa soittajaa, joka soittaa halutun sävelen halutulla kestolla
+
+    Attributes:
+        soittaja: musicalbeeps-kirjaston Player-olio, joka hoitaa sävelien soittamisen
     """
     def __init__(self):
         """Luokan konstruktori, joka luo uuden soittajan

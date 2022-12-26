@@ -1,7 +1,11 @@
 from tkinter import constants
 
 class Nakyma:
+    """Luokka, joka kuvaa näkymää käyttöliittymässä
+    """
     def __init__(self, juuri):
+        """Luokan konstruktori, joka luo uuden näkymän
+        """
         self.juuri = juuri
         self.kehys = None
 

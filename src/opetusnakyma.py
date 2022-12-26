@@ -4,7 +4,8 @@ from opetusdataan_datan_lisaaminen import lisaa_opetusdataan_kappale
 from nakyma import Nakyma
 
 class Opetusnakyma(Nakyma):
-    """Luokka, joka kuvaa opetusnäkymään, jossa voi lisätä kirjoittamansa kappaleen opetusdataan
+    """Luokka, joka kuvaa opetusnäkymään, jossa voi lisätä kirjoittamansa 
+    kappaleen opetusdataan, ja jonka yläluokka on luokka Nakyma
 
     Attributes:
         juuri: juurikomponentti
@@ -23,8 +24,6 @@ class Opetusnakyma(Nakyma):
             nuotit: Trierakenne, joka koostuu opetusdatan nuottisekvensseistä
             takaisin_etusivulle: napin tapahtumakäsittelijä, jolla pääsee takaisin etusivulle
         """
-        #self.juuri = juuri
-        #self.kehys = None
         super().__init__(juuri)
         self.savelet = savelet
         self.nuotit = nuotit
@@ -66,12 +65,12 @@ class Opetusnakyma(Nakyma):
             master=self.kehys,
             height=8,
             width=60)
-        teksti.insert('1.0', "Tässä voit lisätä kappaleen opetusdataan. \
-            Kirjoita kappale muodossa sävel-nuotti Esim. C4-1/4 D4-1/8 E4-1. \
-            Nuotteja vastaavat merkinnät ovat: 1/4=neljäsosanuotti, 1/8=kahdeksasosanuotti, \
-            1/2=puolinuotti, 3/8=pisteellinen neljännesosanuotti, 1=kokonuotti, \
-            1/16=kuudestoistaosanuotti. Nuotit määrittelevät sävelen keston. \
-            Sävelen jälkeinen numero kertoo miltä korkeudelta sävel soitetaan. \
+        teksti.insert('1.0', "Tässä voit lisätä kappaleen opetusdataan.\
+            Kirjoita kappale muodossa sävel-nuotti Esim. C4-1/4 D4-1/8 E4-1.\
+            Nuotteja vastaavat merkinnät ovat: 1/4=neljäsosanuotti, 1/8=kahdeksasosanuotti,\
+            1/2=puolinuotti, 3/8=pisteellinen neljännesosanuotti, 1=kokonuotti,\
+            1/16=kuudestoistaosanuotti. Nuotit määrittelevät sävelen keston.\
+            Sävelen jälkeinen numero kertoo miltä korkeudelta sävel soitetaan.\
             Käytätähän isoja kirjaimia :)")
         teksti['state'] = 'disabled'
         self.data.insert('1.0', "Kirjoita tähän kappaleen sävelet ja nuotit")

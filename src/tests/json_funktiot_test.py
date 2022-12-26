@@ -1,23 +1,33 @@
 import unittest
-from json_funktiot import avaaJson, tallennaJson
+from json_funktiot import avaa_json, tallenna_json
 
-class TestKappaleen_luonti(unittest.TestCase):
+class Test_json_funktiot(unittest.TestCase):
+    """Testiluokka, joka testaa json-funktioita
+    """
     def setUp(self):
+        """Testiluokan alustusmetodi
+        """
         pass
 
-    def test_avaaJson_antaa_dictionaryn(self):
-        data = avaaJson()
+    def test_avaa_json_antaa_dictionaryn(self):
+        """Testimetodi, joka testaa, että avaa_json-funktio antaa data.json-tiedostossa
+        olevan tiedon dictionarynä.
+        """
+        data = avaa_json()
         self.assertEqual(type(data) is dict, True)
         avaimet = list(data.keys())
         self.assertEqual(["nuotit", "savelet"], avaimet)
 
-    def test_tallennaJson_tallentaa_oikein(self):
-        dataAlussa = avaaJson()
+    def test_tallenna_json_tallentaa_oikein(self):
+        """Testimetodi, joka testaa, että tallenna_json-funktio korvaa data.json-tiedoston
+        nykyisen sisällön argumenttinä annetulla sisällöllä
+        """
+        dataAlussa = avaa_json()
         tallennettava = {"nuotit": ["1"], "savelet": ["C4"]}
-        tallennaJson(tallennettava)
-        dataLopussa = avaaJson()
+        tallenna_json(tallennettava)
+        dataLopussa = avaa_json()
         self.assertNotEqual(dataAlussa, dataLopussa)
-        tallennaJson(dataAlussa)
+        tallenna_json(dataAlussa)
 
 
 
