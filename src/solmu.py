@@ -6,7 +6,6 @@ class Solmu:
         kappaleen_loppu: joko True tai False, joka kuvaa sitä, onko solmu loppusolmu
         lapset: dictionary solmun lapsista, eli solmuista, jonne pääsee tästä solmusta
         maara: kuvaa montako kertaa kyseinen solmu on tullut vastaan
-    
     """
     def __init__(self, nimi):
         self.nimi = nimi

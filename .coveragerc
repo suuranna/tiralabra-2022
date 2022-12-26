@@ -1,3 +1,3 @@
 [run]
 source = src
-omit = src/**/__init__.py,src/tests/**,src/sovellus.py,src/kayttoliittyma.py,src/kappalenakyma.py,src/opetusnakyma.py,src/viestinakyma.py,src/aloitusnakyma.py
+omit = src/**/__init__.py,src/tests/**,src/sovellus.py,src/kayttoliittyma.py,src/kappalenakyma.py,src/opetusnakyma.py,src/viestinakyma.py,src/aloitusnakyma.py,src/nakyma.py

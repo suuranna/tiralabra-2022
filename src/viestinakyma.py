@@ -1,34 +1,31 @@
 from tkinter import Tk, Text, ttk
+from nakyma import Nakyma
 
-class Viestinakyma:
+class Viestinakyma(Nakyma):
     """Luokka, joka näyttää halutun viestin uutena ikkunana
-
     Attributes:
         juuri: juurikomponentti
-
     """
     def __init__(self):
         """Luokan konstruktori, joka luo uuden viestinäkymän omassa ikkunassa
-        
         """
-        self.juuri = Tk()
+        super().__init__(Tk())
+        self.kehys = self.juuri
         self.juuri.title("Viesti")
-        
-    def tuhoa(self):
-        """Tuhoaa viesti-ikkunan, jolloin se poistuu näkyvistä
-        
-        """
-        self.juuri.destroy()
 
     def nayta_viesti(self, viesti):
         """Luo viestinäkymän komponentit ja näyttää viesti-ikkunassa argumenttinä annetun viestin
-
         Args:
-            viesti: String-muodossa oleva viesti, joka halutaan näyttää käyttäjälle viesti-ikkunassa
-        
+            viesti: String-muodossa oleva viesti, joka halutaan näyttää
+                käyttäjälle viesti-ikkunassa
         """
-        otsikko = ttk.Label(master=self.juuri, text="Viesti")
-        teksti = Text(master=self.juuri, height=5, width=30)
+        otsikko = ttk.Label(
+            master=self.juuri,
+            text="Viesti")
+        teksti = Text(
+            master=self.juuri,
+            height=5,
+            width=30)
         teksti.insert('1.0', viesti)
         otsikko.pack()
         teksti.pack()
