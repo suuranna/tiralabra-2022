@@ -19,7 +19,7 @@ def soita_kappale(savelet, nuotit, tempo):
     try:
         tempo = int(tempo)
     except:
-        return "Kirjoita jokin nollaa suurempi kokonaisluku numeromuodossa esim. 60"
+        return "Kirjoita tempo numeromuodossa esim. 60"
     
     if tempo < 0:
         return "Kirjoita jokin nollaa suurempi kokonaisluku numeromuodossa esim. 60"

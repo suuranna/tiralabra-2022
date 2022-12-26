@@ -15,11 +15,11 @@ def syotetyn_kappaleen_tarkistus(kappale):
         if len(eroteltu) != 2 or len(eroteltu[0]) < 2 or len(eroteltu[0]) > 3:
             return "Annettu kappale ei ollut kirjoitettu oikeassa muodossa"
             
-        if eroteltu[0][0] not in sallitut_savelet and eroteltu[0][1] not in sallitut_oktaavit:
-            return "sävel ei ollut oikeassa muodossa"
+        if eroteltu[0][0] not in sallitut_savelet or eroteltu[0][1] not in sallitut_oktaavit:
+            return "Joku sävelistä ei ollut oikeassa muodossa"
     
         if eroteltu[1] not in sallitut_nuotit:
-            return "nuotti ei ollu oikeassa muodossa"
+            return "Joku nuoteista ei ollu oikeassa muodossa"
             
         if len(eroteltu[0]) == 3:
             if eroteltu[0][2] == "#" or eroteltu[0][2] == "b":

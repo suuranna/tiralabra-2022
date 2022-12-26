@@ -63,14 +63,6 @@ class TrieRakenne(object):
                     uusi_solmu = Solmu(kappale[i])
                     solmu.lapset[kappale[i]] = uusi_solmu
                     solmu = uusi_solmu
-
-                #if kappale[i] in solmu.lapset:
-                #    solmu.lapset[kappale[i]].maara += 1
-                #    solmu = solmu.lapset[kappale[i]]
-                #else:
-                #    uusi_solmu = Solmu(kappale[i])
-                #    solmu.lapset[kappale[i]] = uusi_solmu
-                #    solmu = uusi_solmu
                 i += 1
             solmu.kappaleen_loppu = True
 

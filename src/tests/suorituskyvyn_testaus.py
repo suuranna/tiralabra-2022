@@ -6,7 +6,7 @@ nykyinen = os.path.dirname(os.path.realpath(__file__))
 vanhempi = os.path.dirname(nykyinen)
 sys.path.append(vanhempi)
 from trierakenne import TrieRakenne
-from jsonFunktiot import *
+from json_funktiot import *
 
 
 class Suorituskykytestaus:
@@ -56,10 +56,10 @@ def main():
     skt.datan_lisaaminen_trieen(25, 40)
     skt.kappaleen_generointi_isolla_maaralla_opetusdataa(20, 20, 500000)
     skt.datan_lisaaminen_trieen(1, 100)
-    #skt.datan_lisaaminen_trieen(1000000, 10)
+    skt.datan_lisaaminen_trieen(1000000, 10)
     skt.datan_lisaaminen_trieen(1, 100)
     skt.datan_lisaaminen_trieen(100000, 10)
-    #skt.datan_lisaaminen_trieen(100000, 20)
+    skt.datan_lisaaminen_trieen(100000, 20)
     skt.datan_lisaaminen_trieen(1, 100)
     skt.datan_lisaaminen_trieen(10000, 10)
     skt.datan_lisaaminen_trieen(10000, 20)
