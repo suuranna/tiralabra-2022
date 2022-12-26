@@ -16,6 +16,11 @@ class Test_lisaa_opetusdataan_kappale(unittest.TestCase):
         self.assertTrue(isinstance(savelet_ja_nuotit, tuple))
         tallennaJson(self.dataAlussa)
 
+    def test_epaonnistuneet_lisayksen_seurauksena_metodi_palauttaa_stringin(self):
+        savelet_ja_nuotit = lisaa_opetusdataan_kappale("C4-1/8 D4-/2 C4#-1/8 D4b-1/8")
+        self.assertTrue(isinstance(savelet_ja_nuotit, str))
+        tallennaJson(self.dataAlussa)        
+
     def test_opetusdataan_lisatty_kappale_tallentuu_json_tiedostoon(self):
         lisatty = lisaa_opetusdataan_kappale(self.lisattava)
         data_lisayksen_jalkeen = avaaJson()
