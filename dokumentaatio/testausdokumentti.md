@@ -38,3 +38,8 @@ Väliaikaisia huomioita:
 
 
 Kappaleen pituus ollessa 20 kappaleita generoidessa generoitiin menevä aika kertaantuu 10:llä määrän kertaantuessa kymmenellä
+
+Testaa:
+- miten trie-rakenteen koko vaikuttaa generointiin ja lisäämiseen
+- kun trie on tyhjä, kauan menee lisätä tietyn
+- kokeile, onko sävelien generoiminen raskaampaa kuin nuottien
