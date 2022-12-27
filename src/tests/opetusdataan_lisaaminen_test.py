@@ -43,4 +43,20 @@ class Test_lisaa_opetusdataan_kappale(unittest.TestCase):
         self.assertTrue(lisatty[1] in data_lisayksen_jalkeen["nuotit"])
 
         tallenna_json(self.dataAlussa)
+
+    def test_savel_H_muuttuu_saveliksi_B(self):
+        """Testimetodi, joka testaa, että sävel H lisätään sävelenä B
+        """
+        trie = TrieRakenne("sävelet")
+        tallenna_json({"nuotit": [], "savelet": []})
+        kappale = "H4-1/4 H3b-1/4 H5#-1/4 B4-1/4"
+        lisaa_opetusdataan_kappale(kappale)
+        trie.alusta()
+        generoitu_kappale = trie.luo_kappale(4, 4)
+        self.assertEqual(generoitu_kappale, ["B4", "B3b", "B5#", "B4"])
+
+        tallenna_json(self.dataAlussa)
         
+    def tearDown(self) -> None:
+        tallenna_json(self.dataAlussa)
+        return super().tearDown()

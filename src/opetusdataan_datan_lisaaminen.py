@@ -26,7 +26,14 @@ def lisaa_opetusdataan_kappale(kappale):
 
     for alkio in lista:
         eroteltu = alkio.split("-")
-        savelet.append(eroteltu[0])
+        korjattu_savel = ""
+        if eroteltu[0][0] == "H":
+            korjattu_savel = "B" + eroteltu[0][1]
+            if len(eroteltu[0]) == 3:
+                korjattu_savel += eroteltu[0][2]
+            savelet.append(korjattu_savel)
+        else:
+            savelet.append(eroteltu[0])
         nuotit.append(eroteltu[1])
 
     opetusdata["savelet"].append(savelet)

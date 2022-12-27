@@ -58,9 +58,10 @@ class TrieRakenne:
                 except KeyError:
                     uusi_solmu = Solmu(kappale[i])
                     solmu.lapset[kappale[i]] = uusi_solmu
-                    solmu = uusi_solmu
+                    solmu = solmu.lapset[kappale[i]]
                 i += 1
             solmu.kappaleen_loppu = True
+
 
     def generoi_kappale(self, solmu, kappale, minimi, maksimi):
         """Generoi uuden kappaleen
@@ -92,8 +93,6 @@ class TrieRakenne:
         if solmu.kappaleen_loppu:
             if len(kappale) >= minimi and len(kappale) <= maksimi:
                 return kappale
-            else:
-                return -2
 
         lapset = solmu.lapset.values()
         maarat = []
@@ -103,6 +102,9 @@ class TrieRakenne:
             nimet.append(lapsi.nimi)
 
         while len(nimet) > 0:
+            if len(lapset) == 0:
+                kappale.pop()
+                break
             arvottu_solmu = self.arpoja.arvo(nimet, maarat)
             for i in range(len(nimet)):
                 if nimet[i] == arvottu_solmu:
@@ -118,13 +120,12 @@ class TrieRakenne:
             if isinstance(generoitu_kappale, int):
                 if generoitu_kappale == -1:
                     break
-                if generoitu_kappale == -2:
-                    continue
             if isinstance(generoitu_kappale, list):
                 return generoitu_kappale
             if len(lapset) == 0:
                 kappale.pop()
                 break
+            kappale.pop()
         return None
 
     def luo_kappale(self, minimi, maksimi):
@@ -142,9 +143,5 @@ class TrieRakenne:
         if minimi < 1 or maksimi < minimi or maksimi < 0 \
             or maksimi > self.pisin or minimi > self.pisin:
             return None
-        kappale = []
-        while True:
-            kappale = self.generoi_kappale(self.alku, [], minimi, maksimi)
-            if kappale:
-                break
+        kappale = self.generoi_kappale(self.alku, [], minimi, maksimi)
         return kappale

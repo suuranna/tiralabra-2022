@@ -1,4 +1,13 @@
 def syotetyn_kappaleen_tarkistus(kappale):
+    """Funktio, joka tarkistaa, että annettu kappale on sallitussa muodossa
+
+    Args:
+        kappale: kappale, joka on kirjoitettu peräkkäisinä sävel-nuotti-yhdisteinä
+
+    Returns:
+        Virheviesti stringinä, jos annettu kappale ei ole sallitussa muodossa
+        1, jos kappale on sallitussa muodossa 
+    """
     sallitut_nuotit = ["1/4", "1/8", "1/2", "3/8", "1/16", "1", "3/16"]
     sallitut_savelet = ["C", "D", "E", "F", "G", "A", "H", "B"]
     sallitut_oktaavit = ["3", "4", "5"]
