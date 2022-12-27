@@ -1,16 +1,32 @@
 # Testausdokumentti
 
-## Yksikkötestauksen estikattavuusraportti
-
-kuva tähän
-
-
 ## Mitä on testattu?
 ### Yksikkötestaus
+
+#### Yksikkötestauksen testikattavuusraportti
+
+Lisää kuva tähän
+
+Yksikkötestauksen ulkopuolelle on jätetty käyttöliittymän komponentit eli käyttöliittyma.py ja kaikki eri näkymät eli nakyma.py, aloitusnakyma.py, kappalenakyma.py ja opetusnakyma.py sekä sovelluksen käynnistykseen tarkoitettu sovellus.py-tiedosto ja tests-hakemisto, jossa on kaikki testit.
+Toisin sanoen muuten src-hakemiston muu koodi on yksikkötestattu.
+
+#### TrieRakenne-luokka
+
+#### Funktiot
+
+#### Muut luokat
+
+Luokat Solmu, Arpoja ja Soittaja on testattu vain siten
 
 
 
 ### Suorituskykytestaus
+
+Suorituskykytestauksessa on testattu kappaleen generointia isolla trie-rakenteella ja kappaleiden lisäämistä trie-rakenteeseen, kun kappaleita on paljon ja ne ovat pitkiä.
+
+#### Kappaleen generoinnin suorituskykytestaus
+
+#### Kappaleen lisäämisen suorituskykytestaus
 
 Väliaikaisia huomioita:
 - kappaleen pituutena 100 on liian paljon, jos kappaleiden määrä on 10000
@@ -20,3 +36,14 @@ Väliaikaisia huomioita:
 - uuden kappaleen generoiminen kestää myös kauemmin mitä enemmän kappaleita on lisättye trieen
 
 
+
+Kappaleen pituus ollessa 20 kappaleita generoidessa generoitiin menevä aika kertaantuu 10:llä määrän kertaantuessa kymmenellä
+
+Testaa:
+- miten trie-rakenteen koko vaikuttaa generointiin ja lisäämiseen
+- kun trie on tyhjä, kauan menee lisätä tietyn
+- kokeile, onko sävelien generoiminen raskaampaa kuin nuottien
+
+kappaleen generoinnille 85 kappaletta, jotka ovat maksimissaan 69 säveltä pitkiä, on maksimi. Silloin generointi jaksaa generoida kappaleita, jotjka ovat maksimissaan 21 säveltä pitkiä
+
+Sovelluksessa on mahdollista käyttää 
