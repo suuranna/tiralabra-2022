@@ -43,3 +43,7 @@ Testaa:
 - miten trie-rakenteen koko vaikuttaa generointiin ja lisäämiseen
 - kun trie on tyhjä, kauan menee lisätä tietyn
 - kokeile, onko sävelien generoiminen raskaampaa kuin nuottien
+
+kappaleen generoinnille 85 kappaletta, jotka ovat maksimissaan 69 säveltä pitkiä, on maksimi. Silloin generointi jaksaa generoida kappaleita, jotjka ovat maksimissaan 21 säveltä pitkiä
+
+Sovelluksessa on mahdollista käyttää 
