@@ -25,9 +25,6 @@ class KL:
         self.savelet = TrieRakenne("sävelet")
         self.nuotit = TrieRakenne("nuotit")
 
-        self.savelet.alusta()
-        self.nuotit.alusta()
-
     def aloita(self):
         """Käynnistää sovelluksen ja laittaa ensimmäiseksi näkymäksi etusivun
         """

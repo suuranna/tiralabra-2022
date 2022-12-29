@@ -85,33 +85,65 @@ def main():
     #mitä enemmän opetusdataa trie-rakenteessa on sitä kauemmin uuden kappaleen lisääminen kestää
     #uuden kappaleen generoiminen kestää myös kauemmin mitä enemmän kappaleita on lisättye trieen
     #skt = Suorituskykytestaus()
-    """
-    skt0 = Suorituskykytestaus()
-    skt0.datan_lisaaminen_trieen(100, 20)
-    skt = Suorituskykytestaus()
-    skt.datan_lisaaminen_trieen(1000, 20)
-    skt1 = Suorituskykytestaus()
-    skt1.datan_lisaaminen_trieen(10000, 20)
-    skt3 = Suorituskykytestaus()
-    skt3.datan_lisaaminen_trieen(100000, 20)
-    skt4 = Suorituskykytestaus()
-    skt4.datan_lisaaminen_trieen(1000000, 20)
+
+    #testaus siitä, miten trien koko vaikuttaa lisäykseen
     """
     skt = Suorituskykytestaus()
-    #skt.datan_lisaaminen_trieen(10000, 50, "nuotit")
-    #skt.datan_lisaaminen_trieen(10000, 50, "nuotit")
-    #skt.datan_lisaaminen_trieen(10000, 50, "nuotit")
-    #skt.datan_lisaaminen_trieen(10000, 50, "nuotit")
-    skt.datan_lisaaminen_trieen(210, 50, "nuotit")
-    #skt.trie2.alusta()
-    #skt.trie2.alusta()
-    for i in range(1, 20):
-        print("kierros: " + str(i))
-        #pituus = 10 * i 
-        #skt.datan_lisaaminen_trieen(10000, 10, "nuotit")
-        skt.kappaleen_generointi_isolla_maaralla_opetusdataa(i, i, 1, "nuotit")
+    maarat = [1, 10, 100, 250, 500, 750, 1000, 2500]#, 4000]
 
+    for i in maarat:
+        skt4 = Suorituskykytestaus()
+        skt4.datan_lisaaminen_trieen(5000, 100, "sävelet")
+        skt3 = Suorituskykytestaus()
+        print("tyhjään trieen lisääminen :")
+        skt3.datan_lisaaminen_trieen(i, 50, "sävelet")
+        print("isoon trieen lisääminen :")
+        skt4.datan_lisaaminen_trieen(i, 50, "sävelet")
+        print("kasvavaan trieen lisääminen: ")
+        skt.datan_lisaaminen_trieen(i, 50, "sävelet")
+    """
 
+    #testi siitä, miten minkä kokoisen kappaleen lisäys vaikuttaa sävelien ja nuottien kesken
+    """
+    print("----------")
+    kappaleenKoot = [10, 20, 50, 100, 250, 300, 350]
+    for i in kappaleenKoot:
+        skt = Suorituskykytestaus()
+        print("Sävelsekvenssien lisääminen: ")
+        skt.datan_lisaaminen_trieen(100, i, "sävelet")
+        print("Nuottisekvenmssien lisääminen: ")
+        skt.datan_lisaaminen_trieen(100, i, "nuotit")
+
+    print("---------")
+
+    kappaleenKoot = [10, 50, 100, 250, 500, 750, 1000]
+    for i in kappaleenKoot:
+        skt = Suorituskykytestaus()
+        print("Sävelsekvenssien lisääminen: ")
+        skt.datan_lisaaminen_trieen(20, i, "sävelet")
+        print("Nuottisekvenmssien lisääminen: ")
+        skt.datan_lisaaminen_trieen(20, i, "nuotit")
+    """
+    #testaa, miten kappaleen generointi onnistuu...
+    #...erikokoisilla trieillä
+
+    skt = Suorituskykytestaus()
+    maarat = [1, 10, 100, 250, 500, 750, 1000, 2500]#, 4000]
+
+    for i in maarat:
+        skt4 = Suorituskykytestaus()
+        skt4.datan_lisaaminen_trieen(5000, 100, "sävelet")
+        skt3 = Suorituskykytestaus()
+        skt3.datan_lisaaminen_trieen(50, 100, "sävelet")
+        print("pienestä triestä generoiminen :")
+        skt3.kappaleen_generointi_isolla_maaralla_opetusdataa(50, 50, i, "sävelet")
+        print("isosta triestä generoiminen :")
+        skt4.kappaleen_generointi_isolla_maaralla_opetusdataa(50, 50, i, "sävelet")
+        print("kasvasta triestä generoiminen: ")
+        skt.datan_lisaaminen_trieen(i, 70, "sävelet")
+        skt3.kappaleen_generointi_isolla_maaralla_opetusdataa(50, 50, i, "sävelet")
+
+    #...erikokoisten kappaleiden generointi ()
 
     return
 
