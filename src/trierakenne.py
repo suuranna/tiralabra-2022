@@ -69,7 +69,6 @@ class TrieRakenne:
             solmu.kappaleen_loppu = True
 
     def etsi_sekvenssin_seuraajat(self, sekvenssi):
-        print(sekvenssi)
         seuraajat = []
         frekvenssit = []
 
@@ -79,13 +78,12 @@ class TrieRakenne:
             try:
                 solmu = solmu.lapset[alkio]
             except KeyError:
+                print("tällä sekvensisllä ei ole seuraajia")
                 return "Tällä sekvenssillä ei ole seuraajia"
         
         for lapsi in solmu.lapset:
             seuraajat.append(lapsi)
             frekvenssit.append(solmu.lapset[lapsi].maara)
-
-        print(seuraajat)
 
         return (seuraajat, frekvenssit)
 
@@ -110,13 +108,13 @@ class TrieRakenne:
             seuraajat = self.etsi_sekvenssin_seuraajat(edelliset)
 
             if isinstance(seuraajat, str):
-                try:
+                if len(kappale) > 0:
                     kappale.pop()
+                if len(edelliset) > 0:
                     edelliset.popleft()
-                    edelliset.append(kappale[len(kappale) - 1])
-                    continue
-                except IndexError:
-                    continue
+                if len(kappale) - 1 >= 0:
+                        edelliset.append(kappale[len(kappale) - 1])
+                continue
 
             seuraaja = self.arpoja.arvo(seuraajat[0], seuraajat[1])
 
