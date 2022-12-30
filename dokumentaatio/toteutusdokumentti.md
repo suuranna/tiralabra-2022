@@ -17,7 +17,7 @@ Generoi_kappale-funktion aikavaativuus on rekursiivisen funktion etsi_seuraava a
 
 Generoi_kappale-funktio hyödyntää p-mittaista listaa, jossa p on funktiolle parametrina annettu pituus, ja k-mittaista listaa, jossa k on aste. Lisäksi se käyttää trie-rakennetta, jonka tilavaativuus on O(m), jossa m on solmujen määrä. Generoi_kappale-funktion tilavaativuus on näin ollen O(m), koska m on todennäköisimmin näistä suurin.
 
-Trie-rakenteella on lisaa_kappale- ja etsi_sekvenssin_seuraajat-metodit. Lisaa_kappale-metodin aikavaativuus on O(nm), jossa n on trieen lisättävien sekvenssien määrä ja m on yhden sekvenssin pituus (eli m=k+1, jossa k on aste). Etsi_sekvenssin_seuraajat-metodin aikavaativuus on O(m) tai O(l), jossa m on annetun sekvenssin pituus ja l on seuraajien määrä, riippuen siitä kumpi on suurempi. 
+Trie-rakenteella on lisaa_kappale- ja etsi_sekvenssin_seuraajat-metodit. Lisaa_kappale-metodin aikavaativuus on O(nm), jossa n on trieen lisättävien sekvenssien määrä ja m on yhden sekvenssin pituus (eli m=k+1, jossa k on aste). Etsi_sekvenssin_seuraajat-metodi hydyntää kahta listaa, joten sen aikavaativuus on O(n), jossa n on listan suuruus. Lisaa_kappale-metodin tilavaativuus on O(p), jossa p on annetun sekvenssin pituus, ja etsi_sekvenssin_seuraajaat-metodin tilavaativuus on O(1), koska se hyödyntää vain paria muuttujaa.
 
 
 ## Työn mahdolliset puutteet ja parannusehdotukset
