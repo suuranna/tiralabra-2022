@@ -27,4 +27,6 @@ Trie-rakenteella on lisaa_kappale- ja etsi_sekvenssin_seuraajat-metodit. Lisaa_k
 
 Kappaleen generoinnin voisi luultavasti toteuttaa jollakin paremmalla tekniikalla kuin rekursiolla, mutta en keksinyt toista tapaa, jolla olisi voinut välttää "umpikujat" ja varmistaa, että niihin ei eksytä uudestaan. 
 
+Lisäksi opetusdataa voisi olla enemmän.
+
 
