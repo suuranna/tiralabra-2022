@@ -1,5 +1,5 @@
-from trierakenne import TrieRakenne
 from collections import deque
+from trierakenne import TrieRakenne
 from arpoja import Arpoja
 
 def generoi_kappale(aste, pituus, savelia_vai_nuotteja):
@@ -21,7 +21,7 @@ def generoi_kappale(aste, pituus, savelia_vai_nuotteja):
         aste = int(aste)
     except ValueError:
         return "Kirjoita aste numeromuodossa esim. 10"
-    
+
     try:
         pituus = int(pituus)
     except ValueError:
@@ -35,13 +35,14 @@ def generoi_kappale(aste, pituus, savelia_vai_nuotteja):
 
     if aste > pituus - 1:
         return "Valitse aste, joka on pienempi kuin valisemasi pituus"
-    
+
     trie = TrieRakenne(savelia_vai_nuotteja)
     trie.lisaa_opetusdata_trieen(aste)
 
     if aste > trie.pisin - 1:
-        return "Aste voi korkeintaan olla yhden pienempi kuin opetusdatan pisin kappale. Tällä hetkellä korkein mahdollinen aste on: " + str(trie.pisin)
-    
+        return "Aste voi korkeintaan olla yhden pienempi kuin opetusdatan pisin kappale." + \
+               "Tällä hetkellä korkein mahdollinen aste on: " + str(trie.pisin)
+
     kappale = None
 
     try:
@@ -49,8 +50,9 @@ def generoi_kappale(aste, pituus, savelia_vai_nuotteja):
     except RecursionError:
         pass
 
-    if kappale == None:
-        return "Kappaleen generoiminen ei onnistunut. Kokeile generointia esimerkiksi pienemmällä asteella"
+    if kappale is None:
+        return "Kappaleen generoiminen ei onnistunut." + \
+               "Kokeile generointia esimerkiksi pienemmällä asteella"
 
     return kappale
 
@@ -111,7 +113,7 @@ def aseta_uudet_kappale_ja_edelliset(kappale, edelliset, aste):
         kappale: lista, joka koostuu sävelistä/nuoteista
         edelliset: jono, joka koostuu kappaleen viimeisistä alkioista
         aste: määrittää, kuinka monta edellistä säveltä/nuottia määrittää seuraavan
-            sävelen/nuotitn  
+            sävelen/nuotitn
     """
     if len(kappale) > 0:
         kappale.pop()

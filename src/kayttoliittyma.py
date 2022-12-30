@@ -1,7 +1,6 @@
 from aloitusnakyma import Aloitusnakyma
 from kappalenakyma import Kappalenakyma
 from opetusnakyma import Opetusnakyma
-from trierakenne import TrieRakenne
 
 class KL:
     """Luokka, joka vastaa käyttöliittymää

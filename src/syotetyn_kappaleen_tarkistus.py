@@ -6,7 +6,7 @@ def syotetyn_kappaleen_tarkistus(kappale):
 
     Returns:
         Virheviesti stringinä, jos annettu kappale ei ole sallitussa muodossa
-        1, jos kappale on sallitussa muodossa 
+        1, jos kappale on sallitussa muodossa
     """
     sallitut_nuotit = ["1/4", "1/8", "1/2", "3/8", "1/16", "1", "3/16"]
     sallitut_savelet = ["C", "D", "E", "F", "G", "A", "H", "B"]
@@ -31,6 +31,5 @@ def syotetyn_kappaleen_tarkistus(kappale):
         if len(eroteltu[0]) == 3:
             if eroteltu[0][2] == "#" or eroteltu[0][2] == "b":
                 continue
-            else:
-                return "Vääränlainen ylennys- tai alennusmerkki"
+            return "Vääränlainen ylennys- tai alennusmerkki"
     return 1

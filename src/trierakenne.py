@@ -91,10 +91,9 @@ class TrieRakenne:
                 solmu = solmu.lapset[alkio]
             except KeyError:
                 return "Tällä sekvenssillä ei ole seuraajia"
-        
+
         for lapsi in solmu.lapset:
             seuraajat.append(lapsi)
             frekvenssit.append(solmu.lapset[lapsi].maara)
 
         return (seuraajat, frekvenssit)
-

@@ -37,7 +37,7 @@ class Kappalenakyma(Nakyma):
         """
         viestinakyma = Viestinakyma()
 
-        if self.kappale == None:
+        if self.kappale is None:
             viestinakyma.nayta_viesti("Mitään kappaletta ei ole vielä generoitu.")
             return
 
@@ -82,15 +82,14 @@ class Kappalenakyma(Nakyma):
             height=8,
             width=60)
         teksti.insert('1.0', "Tässä voit kuunnella juuri generoidun kappaleen" + "\n" +
-            "haluamassasi tempossa tai sitten generoida uuden kappaleen." + "\n" +
-            "Generoidaksesi uuden kappaleen sinun tulee valita aste ja" + "\n" + 
-            "kappaleen pituus. Kirjoita aste ja pituus numeromuodossa." + "\n" +
-            "Generoituasi kappaleen voit kuunnella generoidun kappaleen" + "\n" + 
-            "haluamassasi tempossa." + "\n" + 
-            "Kirjoita haluamasi tempo numeromuodossa." + "\n" + 
-            "Mitä suurempi tempo, sitä nopeampaa kappale soitetaan")
+                      "haluamassasi tempossa tai sitten generoida uuden kappaleen." + "\n" +
+                      "Generoidaksesi uuden kappaleen sinun tulee valita aste ja" + "\n" +
+                      "kappaleen pituus. Kirjoita aste ja pituus numeromuodossa." + "\n" +
+                      "Generoituasi kappaleen voit kuunnella generoidun kappaleen" + "\n" +
+                      "haluamassasi tempossa." + "\n" +
+                      "Kirjoita haluamasi tempo numeromuodossa." + "\n" +
+                      "Mitä suurempi tempo, sitä nopeampaa kappale soitetaan")
         teksti['state'] = 'disabled'
-        #teksti, jossa sanotaan valitsemaan aste
         aste_teksti = Text(
             master=self.kehys,
             height=1,
@@ -99,7 +98,6 @@ class Kappalenakyma(Nakyma):
         aste_teksti['state'] = 'disabled'
         self.aste = ttk.Entry(master=self.kehys)
         self.aste.insert(0, "10")
-        #teksti, jossa sanotaan valitsemaan kappaleen pituus
         pituus_teksti = Text(
             master=self.kehys,
             height=1,

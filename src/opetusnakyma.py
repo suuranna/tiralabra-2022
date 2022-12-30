@@ -4,14 +4,12 @@ from opetusdataan_datan_lisaaminen import lisaa_opetusdataan_kappale
 from nakyma import Nakyma
 
 class Opetusnakyma(Nakyma):
-    """Luokka, joka kuvaa opetusnäkymään, jossa voi lisätä kirjoittamansa 
+    """Luokka, joka kuvaa opetusnäkymään, jossa voi lisätä kirjoittamansa
     kappaleen opetusdataan, ja jonka yläluokka on luokka Nakyma
 
     Attributes:
         juuri: juurikomponentti
         kehys: komponentti, jonka avulla tämän näkymän komponentit pysyvät vain tässä näkymässä
-        savelet: Trierakenne, joka koostuu opetusdatan sävelsekvensseistä
-        nuotit: Trierakenne, joka koostuu opetusdatan nuottisekvensseistä
         takaisin_etusivulle: napin tapahtumakäsittelijä, jolla pääsee takaisin etusivulle
         data = tekstikenttään kirjoitettu kappale
     """
@@ -61,22 +59,22 @@ class Opetusnakyma(Nakyma):
             height=20,
             width=60)
         teksti.insert('1.0', "Tässä voit lisätä kappaleen opetusdataan." + "\n" +
-            "Kirjoita kappale muodossa sävel-nuotti" + "\n" + 
-            "Esim. C4-1/4 D4-1/8 E4-1 F4#-1/16 G4b-1/2 C5-1" + "\n" +
-            "Sovelluksessa on käytössä seitsemän eri nuottia" + "\n" +
-            "ja ne kirjoitetaan murtolukuina." + "\n" +
-            "Nuotteja vastaavat merkinnät ovat:" + "\n" + "1=kokonuotti," + "\n" +
-            "1/2=puolinuotti," + "\n" + "1/4=neljäsosanuotti," + "\n" +
-            "1/8=kahdeksasosanuotti," + "\n" +"3/8=pisteellinen neljässosanuotti," + "\n" +
-            "1/16=kuudestoistaosanuotti." + "\n" + 
-            "3/16=pisteellinen kahdeksasosanuotti" + "\n" +
-            "Nuotit määrittelevät sävelen keston. Sävelen jälkeinen" + "\n" + 
-            "numero kertoo miltä korkeudelta sävel soitetaan ja sen." + "\n" +
-            "voi valita väliltä 3-5, 3 ollessa matalin ja 5 korkein" + "\n" + 
-            "Alennus- ja ylennysmerkit tulevat tämän numeron jälkeen." + "\n" +
-            "Alennusmerkki on b ja ylennysmerkki on #" + "\n" +
-            "Säveliä ovat: C, D, E, F, G, A, H, B" + "\n" +
-            "Käytätähän isoja kirjaimia :)")
+                      "Kirjoita kappale muodossa sävel-nuotti" + "\n" +
+                      "Esim. C4-1/4 D4-1/8 E4-1 F4#-1/16 G4b-1/2 C5-1" + "\n" +
+                      "Sovelluksessa on käytössä seitsemän eri nuottia" + "\n" +
+                      "ja ne kirjoitetaan murtolukuina." + "\n" +
+                      "Nuotteja vastaavat merkinnät ovat:" + "\n" + "1=kokonuotti" + "\n" +
+                      "1/2=puolinuotti" + "\n" + "1/4=neljäsosanuotti" + "\n" +
+                      "1/8=kahdeksasosanuotti" + "\n" +"3/8=pisteellinen neljässosanuotti" + "\n" +
+                      "1/16=kuudestoistaosanuotti" + "\n" +
+                      "3/16=pisteellinen kahdeksasosanuotti" + "\n" +
+                      "Nuotit määrittelevät sävelen keston. Sävelen jälkeinen" + "\n" +
+                      "numero kertoo miltä korkeudelta sävel soitetaan ja sen." + "\n" +
+                      "voi valita väliltä 3-5, 3 ollessa matalin ja 5 korkein" + "\n" +
+                      "Alennus- ja ylennysmerkit tulevat tämän numeron jälkeen." + "\n" +
+                      "Alennusmerkki on b ja ylennysmerkki on #" + "\n" +
+                      "Säveliä ovat: C, D, E, F, G, A, H, B" + "\n" +
+                      "Käytätähän isoja kirjaimia :)")
         teksti['state'] = 'disabled'
         self.data.insert('1.0', "Kirjoita tähän kappaleen sävelet ja nuotit")
         lisaa = ttk.Button(

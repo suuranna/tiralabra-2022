@@ -4,7 +4,7 @@ from nakyma import Nakyma
 class Viestinakyma(Nakyma):
     """Luokka, joka näyttää halutun viestin uutena ikkunana
     ja jonka yläluokka on luokka Nakyma
-    
+
     Attributes:
         juuri: juurikomponentti
     """

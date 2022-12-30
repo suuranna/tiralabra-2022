@@ -42,8 +42,8 @@ class Aloitusnakyma(Nakyma):
             height=3,
             width=60)
         teksti.insert('1.0', "Tervetuloa sovellukseen! :) Tässä sovelluksessa voit joko " + "\n" +
-            "generoida uuden kappaleen ja kuunnella sen tai" + "\n" +
-            "lisätä opetusdataan tietämiäsi kappaleita.")
+                      "generoida uuden kappaleen ja kuunnella sen tai" + "\n" +
+                      "lisätä opetusdataan tietämiäsi kappaleita.")
         teksti['state'] = 'disabled'
         opetusdataan = ttk.Button(
             master=self.kehys,

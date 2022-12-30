@@ -14,7 +14,8 @@ def soita_kappale(savelet, nuotit, tempo):
         Jos kappale saadaan onnistuneesti soitettua, palautetaan 0 merkkinä siitä
     """
     soittaja = Soittaja()
-    nuottien_kestot = {"1/4": 60, "1/8": 30, "1/2": 120, "3/8": 90, "1/16": 15, "1": 240, "3/16": 45}
+    nuottien_kestot = {"1/4": 60, "1/8": 30, "1/2": 120,
+                       "3/8": 90, "1/16": 15, "1": 240, "3/16": 45}
 
     try:
         tempo = int(tempo)
