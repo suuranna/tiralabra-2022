@@ -79,31 +79,51 @@ class Kappalenakyma(Nakyma):
             text="Generoi uusi kappale ja kuuntele se")
         teksti = Text(
             master=self.kehys,
-            height=5,
+            height=8,
             width=60)
-        teksti.insert('1.0', "Tässä voit kuunnella juuri generoidun kappaleen \
-            haluamassasi tempossa tai sitten generoida uuden kappaleen. \
-            Generoidaksesi uuden kappaleen sinun tulee valita aste \
-            Kirjoita aste numeromuodossa \
-            Kirjoita haluamasi tempo numeromuodossa. \
-            Mitä suurempi tempo, sitä nopeampaa kappale soitetaan")
+        teksti.insert('1.0', "Tässä voit kuunnella juuri generoidun kappaleen" + "\n" +
+            "haluamassasi tempossa tai sitten generoida uuden kappaleen." + "\n" +
+            "Generoidaksesi uuden kappaleen sinun tulee valita aste ja" + "\n" + 
+            "kappaleen pituus. Kirjoita aste ja pituus numeromuodossa." + "\n" +
+            "Generoituasi kappaleen voit kuunnella generoidun kappaleen" + "\n" + 
+            "haluamassasi tempossa." + "\n" + 
+            "Kirjoita haluamasi tempo numeromuodossa." + "\n" + 
+            "Mitä suurempi tempo, sitä nopeampaa kappale soitetaan")
         teksti['state'] = 'disabled'
         #teksti, jossa sanotaan valitsemaan aste
+        aste_teksti = Text(
+            master=self.kehys,
+            height=1,
+            width=23)
+        aste_teksti.insert('1.0', " Valitse aste, esim. 8")
+        aste_teksti['state'] = 'disabled'
         self.aste = ttk.Entry(master=self.kehys)
         self.aste.insert(0, "10")
         #teksti, jossa sanotaan valitsemaan kappaleen pituus
+        pituus_teksti = Text(
+            master=self.kehys,
+            height=1,
+            width=49)
+        pituus_teksti.insert('1.0', " Valitse generoitavan kappaleen pituus, esim. 20")
+        pituus_teksti['state'] = 'disabled'
         self.kappaleen_pituus = ttk.Entry(master=self.kehys)
         self.kappaleen_pituus.insert(0, "20")
         generoi_uusi = ttk.Button(
             master=self.kehys,
-            text="generoi uusi kappale",
+            text="Generoi uusi kappale",
             command=self.generoi_uusi_kappale)
+        tempo_teksti = Text(
+            master=self.kehys,
+            height=1,
+            width=25)
+        tempo_teksti.insert('1.0', " Valitse tempo, esim. 60")
+        teksti['state'] = 'disabled'
         self.tempo = ttk.Entry(master=self.kehys)
         self.tempo.insert(0, "120")
 
         soita = ttk.Button(
             master=self.kehys,
-            text="soita generoitu kappale",
+            text="Soita generoitu kappale",
             command=self.soita_generoitu_kappale)
         generoi_uusi = ttk.Button(
             master=self.kehys,
@@ -115,11 +135,12 @@ class Kappalenakyma(Nakyma):
             command=self.takaisin_etusivulle)
         otsikko.pack()
         teksti.pack()
-        #teksti
+        aste_teksti.pack()
         self.aste.pack()
-        #teksti
+        pituus_teksti.pack()
         self.kappaleen_pituus.pack()
         generoi_uusi.pack()
+        tempo_teksti.pack()
         self.tempo.pack()
         soita.pack()
         etusivulle.pack()

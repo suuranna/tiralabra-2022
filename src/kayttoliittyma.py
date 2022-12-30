@@ -9,11 +9,7 @@ class KL:
     Attributes:
         juuri: juurikomponentti
         nakyma_nyt: tämänhetkinen näkymä
-        savelet: Trierakenne, joka koostuu opetusdatan sävelsekvensseistä
-        nuotit: Trierakenne, joka koostuu opetusdatan nuottisekvensseistä
-
     """
-
     def __init__(self, juuri):
         """Luokan konstruktori, joka luo uuden käyttöliittymän (KL:n)
 
@@ -22,8 +18,6 @@ class KL:
         """
         self.juuri = juuri
         self.nakyma_nyt = None
-        #self.savelet = TrieRakenne("sävelet")
-        #self.nuotit = TrieRakenne("nuotit")
 
     def aloita(self):
         """Käynnistää sovelluksen ja laittaa ensimmäiseksi näkymäksi etusivun

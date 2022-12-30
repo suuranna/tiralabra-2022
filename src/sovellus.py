@@ -3,7 +3,7 @@ from kayttoliittyma import KL
 
 
 ikkuna = Tk()
-ikkuna.title("tiralabra")
+ikkuna.title("Musiikintuottaja")
 
 kayttoliittyma = KL(ikkuna)
 kayttoliittyma.aloita()

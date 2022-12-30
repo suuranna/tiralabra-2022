@@ -39,18 +39,19 @@ class Aloitusnakyma(Nakyma):
             text="Etusivu")
         teksti = Text(
             master=self.kehys,
-            height=4,
+            height=3,
             width=60)
-        teksti.insert('1.0', "Tervetuloa sovellukseen! :) Generoi uusi kappale \
-            ja siirry kuuntelemaan sitä tai lisää tietämiäsi kappaleita opetusdataan")
+        teksti.insert('1.0', "Tervetuloa sovellukseen! :) Tässä sovelluksessa voit joko " + "\n" +
+            "generoida uuden kappaleen ja kuunnella sen tai" + "\n" +
+            "lisätä opetusdataan tietämiäsi kappaleita.")
         teksti['state'] = 'disabled'
         opetusdataan = ttk.Button(
             master=self.kehys,
-            text="lisää opetusdataa",
+            text="Lisää opetusdataa",
             command=self.lisaa_opetusdataa)
         generoi = ttk.Button(
             master=self.kehys,
-            text="generoi uusi kappale ja siirry uuteen näkymään",
+            text="Generoi uusi kappale",
             command=self.nayta_generoitu_kappale)
         otsikko.pack()
         teksti.pack()

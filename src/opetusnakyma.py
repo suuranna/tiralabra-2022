@@ -54,19 +54,29 @@ class Opetusnakyma(Nakyma):
             text="Lisää opetusdataa")
         self.data = Text(
             master=self.kehys,
-            height=6,
+            height=15,
             width=58)
         teksti = Text(
             master=self.kehys,
-            height=8,
+            height=20,
             width=60)
-        teksti.insert('1.0', "Tässä voit lisätä kappaleen opetusdataan.\
-            Kirjoita kappale muodossa sävel-nuotti Esim. C4-1/4 D4-1/8 E4-1.\
-            Nuotteja vastaavat merkinnät ovat: 1/4=neljäsosanuotti, 1/8=kahdeksasosanuotti,\
-            1/2=puolinuotti, 3/8=pisteellinen neljännesosanuotti, 1=kokonuotti,\
-            1/16=kuudestoistaosanuotti. Nuotit määrittelevät sävelen keston.\
-            Sävelen jälkeinen numero kertoo miltä korkeudelta sävel soitetaan.\
-            Käytätähän isoja kirjaimia :)")
+        teksti.insert('1.0', "Tässä voit lisätä kappaleen opetusdataan." + "\n" +
+            "Kirjoita kappale muodossa sävel-nuotti" + "\n" + 
+            "Esim. C4-1/4 D4-1/8 E4-1 F4#-1/16 G4b-1/2 C5-1" + "\n" +
+            "Sovelluksessa on käytössä seitsemän eri nuottia" + "\n" +
+            "ja ne kirjoitetaan murtolukuina." + "\n" +
+            "Nuotteja vastaavat merkinnät ovat:" + "\n" + "1=kokonuotti," + "\n" +
+            "1/2=puolinuotti," + "\n" + "1/4=neljäsosanuotti," + "\n" +
+            "1/8=kahdeksasosanuotti," + "\n" +"3/8=pisteellinen neljässosanuotti," + "\n" +
+            "1/16=kuudestoistaosanuotti." + "\n" + 
+            "3/16=pisteellinen kahdeksasosanuotti" + "\n" +
+            "Nuotit määrittelevät sävelen keston. Sävelen jälkeinen" + "\n" + 
+            "numero kertoo miltä korkeudelta sävel soitetaan ja sen." + "\n" +
+            "voi valita väliltä 3-5, 3 ollessa matalin ja 5 korkein" + "\n" + 
+            "Alennus- ja ylennysmerkit tulevat tämän numeron jälkeen." + "\n" +
+            "Alennusmerkki on b ja ylennysmerkki on #" + "\n" +
+            "Säveliä ovat: C, D, E, F, G, A, H, B" + "\n" +
+            "Käytätähän isoja kirjaimia :)")
         teksti['state'] = 'disabled'
         self.data.insert('1.0', "Kirjoita tähän kappaleen sävelet ja nuotit")
         lisaa = ttk.Button(
