@@ -61,11 +61,6 @@ Esimerkiksi "C4#-1/4" on ylennetty C-sävel ja "D4b-1/4" on alennettu D-sävel
 
 Kappalenäkymässä generoidun kappaleen voi kuunnella haluamassaa tempossa. Mitä suurempi tempo, sitä nopeampaa generoitu kappale soitetaan. Generoitu kappale on tällä hetkellä 10-20 säveltä/nuottia pitkä. Koska sovelluksessa ei ole määritelty ennalta mitään astetta Markovin ketjulle, ottaa kappaleen generointi kaikki edelliset sävelet/nuotit huomioon generoidessa uutta kappaletta, minkä takia lopputulos muistuttaa usein jotakin opetusdatassa olevaa kappaletta.
 
-Kappalenäkymässä voi myös generoida uuden kappaleen.
+Kappalenäkymässä voi myös generoida uuden kappaleen. Kappaleen generointi hyödyntää Markovin ketjua ja 
 
-ja opetusdataan on lisätty vain Tuiki tuiki tähtönen, Ukko-Nooa ja 
-Lady Gagan Bad romancesta pieni osa, joten generoitu kappale ei vielä ole mitenkään tajunnan räjäyttävä ja 
-muistuttaa osin näitä opetusdatan kappaleita, ja välillä lopputuloksena on joku näistä opetusdatan kappaleista. 
-Generoitu kappale generoidaan nyt trie-rakenteen avulla, ja trierakenteeseen voi lisätä uutta dataa. 
-Lisätty data ei kuitenkaan vielä tallennu json-tiedostoon vaan se katoaa sovelluksen sulkemisen yhteydessä.
 
