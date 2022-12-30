@@ -12,12 +12,24 @@ Toisin sanoen muuten src-hakemiston muu koodi on yksikkötestattu.
 
 #### TrieRakenne-luokka
 
-#### Funktiot
+TrieRakenne-luokkaa on testattu siten, että voidaan olla varmistuneita siitä, että sen metodit toimivat niin kuin pitää. 
+Testimetodi test_etsi_sekvenssin_seuraajat_loytaa_oikeat_seuraajat testaa sitä, että etsi_sekvenssin_seuraajat-metodi toimii oikein. Samalla tulee testattua, että lisaa_kappale-metodi lisää trieen oikean pituisia sekvenssejä.
+
+#### Kappaleen generointi
+
+Kappaleen generointia on testattu muum muassa siten, että kappaletta ei generoida virheellisillä parametreilla, kappale koostuu oikean mittaisista opetusdatan sekvensseistä ja lisäksi tilanteita, jossa kappaleen generointi epäonnistuu. Lisäksi on testattu funktiota, joka muuttaa kappaleen ja edellisten sävelien/nuottien arvot oikein, että arvot todella ovat oikeat.
+
+#### Json-funktiot
+
+Json-funktioita on testattu siten, että on varmistettu, että ne osaavat hakea oikean sisällön data.json-tiedostosta, ja että ne tallentavat oikein uuden sisällön samaan tiedostoon. 
+
+#### Muut funktiot
+
+Muut funktiot, kuten lisaa_opetusdataan_kappale, syotetyn_kappaleen_tarkistus ja soita_kappale, on testattu suurimmaksi osaksi siten, että on tutkittu niiden palautuksia, ja että ne palauttavat tietyn jutun tietyn toimenpiteen seurauksena.
 
 #### Muut luokat
 
-Luokat Solmu, Arpoja ja Soittaja on testattu vain siten
-
+Luokat Solmu, Arpoja ja Soittaja on testattu vain siten, että on tarkistettu, että niiden konstruktori konstruktroi ne oikein, ja että niiden metodi toimii oikein.
 
 
 ### Suorituskykytestaus
@@ -27,23 +39,3 @@ Suorituskykytestauksessa on testattu kappaleen generointia isolla trie-rakenteel
 #### Kappaleen generoinnin suorituskykytestaus
 
 #### Kappaleen lisäämisen suorituskykytestaus
-
-Väliaikaisia huomioita:
-- kappaleen pituutena 100 on liian paljon, jos kappaleiden määrä on 10000
-- 2000-10000 on liian iso pituus kappaleelle, vaikka kappaleita olisikin vain 10
-- 1 000 000 kappaletta on ehkä vähän liikaa vaikka kappaleiden pituus olisi vain 10 (69 sekunttia meni)
-- mitä enemmän opetusdataa trie-rakenteessa on sitä kauemmin uuden kappaleen lisääminen kestää
-- uuden kappaleen generoiminen kestää myös kauemmin mitä enemmän kappaleita on lisättye trieen
-
-
-
-Kappaleen pituus ollessa 20 kappaleita generoidessa generoitiin menevä aika kertaantuu 10:llä määrän kertaantuessa kymmenellä
-
-Testaa:
-- miten trie-rakenteen koko vaikuttaa generointiin ja lisäämiseen
-- kun trie on tyhjä, kauan menee lisätä tietyn
-- kokeile, onko sävelien generoiminen raskaampaa kuin nuottien
-
-kappaleen generoinnille 85 kappaletta, jotka ovat maksimissaan 69 säveltä pitkiä, on maksimi. Silloin generointi jaksaa generoida kappaleita, jotjka ovat maksimissaan 21 säveltä pitkiä
-
-Sovelluksessa on mahdollista käyttää 
