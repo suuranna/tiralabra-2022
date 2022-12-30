@@ -13,6 +13,9 @@ class Test_generoi_kappale(unittest.TestCase):
         pass
 
     def test_generoi_kappale_ei_generoi_vaaranlaisilla_parametreilla(self):
+        """Testimetodi, joka testaa, että generoi_kappale-funktio ei
+        generoi vääränlaisilla ___
+        """
         kappale = generoi_kappale("kuusi", 7, "sävelet")
         self.assertTrue(isinstance(kappale, str))
         kappale = generoi_kappale(4, "seitsemän", "sävelet")
@@ -34,6 +37,9 @@ class Test_generoi_kappale(unittest.TestCase):
         self.assertTrue(isinstance(kappale, str))
 
     def test_generoitu_kappale_koostuu_opetusdatan_sekvensseista(self):
+        """Testimetodi, joka testaa, että generoitu_kappale koostuu asteen
+        mittaisista sekvensseistä opetusdatasta
+        """
         for aste in range(1, 50):
             trie = TrieRakenne("sävelet")
             trie.lisaa_opetusdata_trieen(aste)
@@ -50,6 +56,9 @@ class Test_generoi_kappale(unittest.TestCase):
 
 
     def test_generoi_kappale_sisaltaa_asteen_mittaisia_patkia_opetusdatasta(self):
+        """Testimetodi, joka testaa, että generoitu_kappale koostuu asteen
+        mittaisista sekvensseistä opetusdatasta
+        """
         data_alussa = avaa_json()
         tallenna_json({"nuotit": [], "savelet": []})
         lisaa_opetusdataan_kappale("A4-1/4 C4-1/4 C4-1/4 B4-1/4 C4-1/4 B4-1/4 B4-1/4 A4-1/4 C4-1/4 C4-1/4 B4-1/4 C4-1/4 B4-1/4 B4-1/4")
@@ -69,6 +78,9 @@ class Test_generoi_kappale(unittest.TestCase):
         tallenna_json(data_alussa)
 
     def test_generoi_kappale_generoi_kappaleen_kaikilla_mahdollisilla_asteilla(self):
+        """Testimetodi, joka testaaa, että generoi_kappale-funktio pystyy generoimaan
+        kaikilla mahdollisilla asteilla
+        """
         opetusdata = avaa_json()
         pisin = 0
         for kappale in opetusdata["savelet"]:

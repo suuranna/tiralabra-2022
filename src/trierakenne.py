@@ -1,7 +1,5 @@
 from json_funktiot import avaa_json
 from solmu import Solmu
-from arpoja import Arpoja
-from collections import deque
 
 class TrieRakenne:
     """Luokka, joka kuvaa Trie-rakennetta
@@ -26,8 +24,9 @@ class TrieRakenne:
         self.pisin = 0
 
     def lisaa_opetusdata_trieen(self, aste):
-        """Alustaa Trie-rakenteen siten, että lisätään Trie-rakenteenseen
+        """Metodi, jolla lisätään Trie-rakenteenseen
         data.json-tiedostossa olevat opetusdatan kappaleet
+        halutulla asteella
         """
         data = avaa_json()
         if self.savelet_vai_nuotit == "sävelet":
@@ -38,8 +37,19 @@ class TrieRakenne:
                 self.lisaa_kappale(aste, nuotit)
 
     def lisaa_kappale(self, aste, kappale):
+        """Metodi, joka lisää trieen annetusta kappaleesta
+        aste + 1 -mittaisia sekvenssejä
+
+        Args:
+            aste: määrittää, minkä mittaisia sekvenssejä
+                trieen lisätään
+            kappale: lista säveliä/nuotteja
+
+        Returns:
+            None, jos aste +1 on suurempi kuin kappaleen pituus
+        """
         if aste + 1 > len(kappale):
-            return
+            return None
         if len(kappale) > self.pisin:
             self.pisin = len(kappale)
         solmu = self.alku
@@ -59,6 +69,18 @@ class TrieRakenne:
             solmu.kappaleen_loppu = True
 
     def etsi_sekvenssin_seuraajat(self, sekvenssi):
+        """Metodi, joka etsii triestä halutun sekvenssin
+        seuraajat
+
+        Args:
+            sekvenssi: lista sävelistä/nuoteista, jonka seuraajia
+                etsitään
+
+        Returns:
+            string, jos annetulla sekvenssillä ei ole seuraajia
+            tuple, (jossa on seuraajat listana ja niiden määrät listana),
+                jos sekvenssille löytyy seuraajia
+        """
         seuraajat = []
         frekvenssit = []
 

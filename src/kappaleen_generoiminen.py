@@ -41,23 +41,35 @@ def generoi_kappale(aste, pituus, savelia_vai_nuotteja):
 
     if aste > trie.pisin - 1:
         return "Aste voi korkeintaan olla yhden pienempi kuin opetusdatan pisin kappale. Tällä hetkellä korkein mahdollinen aste on: " + str(trie.pisin)
+    
     kappale = None
+
     try:
-        kappale = rekursio(pituus, aste, [], trie, deque([]))
+        kappale = etsi_seuraava(pituus, aste, [], trie, deque([]))
     except RecursionError:
         pass
 
     if kappale == None:
-        return "Kappaleen generoiminen ei onnistunut. Kokeile generointia toisilla arvoilla"
+        return "Kappaleen generoiminen ei onnistunut. Kokeile generointia esimerkiksi pienemmällä asteella"
 
     return kappale
 
-def rekursio(pituus, aste, kappale, trie, edelliset):
+def etsi_seuraava(pituus, aste, kappale, trie, edelliset):
     """Rekursiivinen funktio, joka etsii kappaleelle seuraavia
-    nuotteja/säveliä
+    nuotteja/säveliä niin kauan kunnes kappale on halutun pituinen
+
+    Args:
+        pituus: kappaleen haluttu pituus
+        aste: määrittää, kuinka monta edellistä säveltä/nuottia määrittää seuraavan
+            sävelen/nuotitn
+        kappale: lista jo valituista sävelistä/nuoteista
+        trie: trie-rakenne, jossa on määriteltynä sävel- tai nuottisekvenssejä
+        edelliset: jono kappaleen viimeisistä sävelistä/nuoteista
+
     """
     if len(kappale) == pituus:
         return kappale
+
     arpoja = Arpoja()
 
     seuraajat = trie.etsi_sekvenssin_seuraajat(edelliset)
@@ -85,18 +97,25 @@ def rekursio(pituus, aste, kappale, trie, edelliset):
 
         if len(kappale) >= pituus:
             return kappale
-        generoitu_kappale = rekursio(pituus, aste, kappale, trie, edelliset)
+        generoitu_kappale = etsi_seuraava(pituus, aste, kappale, trie, edelliset)
         if isinstance(generoitu_kappale, list):
             return generoitu_kappale
         aseta_uudet_kappale_ja_edelliset(kappale, edelliset, aste)
     aseta_uudet_kappale_ja_edelliset(kappale, edelliset, aste)
 
 def aseta_uudet_kappale_ja_edelliset(kappale, edelliset, aste):
+    """Funktio, joka poistaa kappaleen viimeisen alkion ja päivittää
+    edelliset vastaamaan kappaleen viimeisiä alkioita
+
+    Args:
+        kappale: lista, joka koostuu sävelistä/nuoteista
+        edelliset: jono, joka koostuu kappaleen viimeisistä alkioista
+        aste: määrittää, kuinka monta edellistä säveltä/nuottia määrittää seuraavan
+            sävelen/nuotitn  
+    """
     if len(kappale) > 0:
         kappale.pop()
     if len(edelliset) > 0:
         edelliset.pop()
     if len(kappale) - 1 - aste >= 0:
         edelliset.appendleft(kappale[len(kappale) - aste])
-
-
