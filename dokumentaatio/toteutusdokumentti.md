@@ -6,10 +6,13 @@ Toteutin trie-rakennetta ja Markovin ketjua hyödyntävän musiikintuottajan.
 
 Ohjelman tärkeimmät rakennepalat ovat trie-rakenne ja kappaleen generoiva funktio.
 
-Trie-rakenne on toteutettu yhtenä luokkana, joka hyödyntää Solmu-luokkaa. Trie-rakenteen avulla on helppo 
+Trie-rakenne on toteutettu yhtenä luokkana, joka hyödyntää Solmu-luokkaa. Trie-rakenteen avulla on helppo löytää seuraava sävel/nuotti, joka seuraa k-määrää edellisiä säveliä/nuotteja. 
+
+Kappaleen generoiminen hyödyntää trie-rakennetta ja rekursiota. Niiden avulla saadaan generoitua kappale, jonka sävel- tai nuottisekvenssit ovat opetusdatan kappaleista. Rekursio ei välttämättä ole paras mahdollinen tähän algoritmiin, mutta sillä välttyy ainakin ikuisista loopeista.
 
 Sovelluksessa on käytössä graafinen käyttöliittymä, joka koostuu neljästä näkymästä. Aloitus-, opetus- ja kappalenäkymä ovat sovelluksen käynnistyessä aukeavassa ikkunassa kun taas viestinäkymä on uudessa omassa ikkunassaan aukeava näkymä. Kaikki nämä näkymät perivät Nakyma-luokan.
 
+Sovellukselle annettu opetusdata säilötään data.json-tiedostoon, josta ne on helppo hakea ja lisätä trieen ja lisäksi uusien kappaleiden lisääminen sinne on helppoa.
 
 ## Saavutetut aika- ja tilavaativuudet
 
