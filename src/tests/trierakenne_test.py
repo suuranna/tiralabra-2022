@@ -45,25 +45,26 @@ class TestTrierakenne(unittest.TestCase):
         self.trie2.lisaa_opetusdata_trieen(3)
         self.assertEqual(pisinN, self.trie2.pisin)
         self.assertEqual(pisinS, self.trie.pisin)
-            
-    def test_generoidun_kappaleen_pituus_on_0_ja_pisimmän_opetuskappaleen_pituuden_välistä(self):
-        """Testimetodi, joka testaa, että generoi_kappale-funktio pystyy generoimaan kappaleen
-        kaikilla pituuksilla, jotka ovat 2:n ja opetusdatan pisimmän kappaleen pituuden välistä.
+    
+    def test_etsi_sekvenssin_seuraajat_loytaa_oikeat_seuraajat(self):
+        """Testimetodi, joka testaa, että etsi_sekvenssin_seuraajat-metodi
+        löytää oikeat seuraajat
         """
-        pisin = 0
-        for kappale in self.data_alussa["savelet"]:
-            if len(kappale) > pisin:
-                pisin = len(kappale)
-        
-        for i in range(2, pisin + 1):
-            kappale = generoi_kappale(1, i, "sävelet")
-            self.assertEqual(len(kappale), i)
-        #self.assertEqual(self.trie2.luo_kappale(self.trie2.pisin + 1, self.trie2.pisin + 1), None)
+        kappale = ["A4", "C4", "C4", "B4", "C4", "B4", "B4"]
 
-    def test_generoi_kappale_palauttaa_listan(self):
-        """Testimetodi, joka testaa, että generoi_kappale-funktio palauttaa listan onnistuneen
-        luonnin seurauksena
-        """
-        kappale = generoi_kappale(4, 5, "säveliä")
-        self.assertTrue(isinstance(kappale, list))
+        self.trie.lisaa_kappale(2, kappale)
 
+        seuraajat = self.trie.etsi_sekvenssin_seuraajat(["C4", "B4"])
+        self.assertEqual(seuraajat[0], ["C4", "B4"])
+
+        seuraajat = self.trie.etsi_sekvenssin_seuraajat(["C4"])
+        self.assertEqual(seuraajat[0], ["C4", "B4"])
+
+        seuraajat = self.trie.etsi_sekvenssin_seuraajat([])
+        self.assertEqual(seuraajat[0], ["A4", "C4", "B4"])
+
+        seuraajat = self.trie.etsi_sekvenssin_seuraajat(["A4", "C4", "C4"])
+        self.assertEqual(seuraajat[0], [])
+
+        seuraajat = self.trie.etsi_sekvenssin_seuraajat(["A4", "C4", "C4", "B4"])
+        self.assertTrue(isinstance(seuraajat[0], str))

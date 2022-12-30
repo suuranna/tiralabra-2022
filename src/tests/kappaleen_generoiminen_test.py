@@ -1,8 +1,9 @@
 import unittest
-from kappaleen_generoiminen import generoi_kappale
+from kappaleen_generoiminen import generoi_kappale, aseta_uudet_kappale_ja_edelliset
 from json_funktiot import avaa_json, tallenna_json
 from opetusdataan_datan_lisaaminen import lisaa_opetusdataan_kappale
 from trierakenne import TrieRakenne
+from collections import deque
 
 class Test_generoi_kappale(unittest.TestCase):
     """Testiluokka, joka testaa generoi_kappale-funktiota
@@ -90,3 +91,48 @@ class Test_generoi_kappale(unittest.TestCase):
         for aste in range(1, pisin):
             kappale = generoi_kappale(aste, pisin, "sävelet")
             self.assertTrue(isinstance(kappale, list))
+
+    def test_generoi_kappale_palauttaa_virheviestin_jos_generointi_ei_onnistunut(self):
+        """Testimetodi, joka testaa, että generoi_kappale palauttaa None,
+        jos kappaleen generoiminen ei onnistu
+        """
+        data_alussa = avaa_json()
+        tallenna_json({"nuotit": [], "savelet": []})
+        kappale = "A4-1/4 C4-1/4 C4-1/4 B4-1/4 C4-1/4 B4-1/4 B4-1/4 A4-1/4 C4-1/4 C4-1/4 B4-1/4 C4-1/4 B4-1/4 B4-1/4"
+        lisaa_opetusdataan_kappale(kappale)
+
+        generoitu_kappale = generoi_kappale(len(kappale) - 1, len(kappale) + 1, "sävelet")
+        
+        self.assertTrue(generoitu_kappale, "Kappaleen generoiminen ei onnistunut. Kokeile generointia esimerkiksi pienemmällä asteella")
+
+        tallenna_json(data_alussa)
+
+    def test_rekursio_virheen_sattuessa_generoi_kappale_palauttaa_virheviestin(self):
+        """Testimetodi, joka testaa, että rekursion mennessä liian pitkälle 
+        palautetaan virheviesti
+        """
+        kappale = generoi_kappale(1, 10000, "sävelet")
+        self.assertEqual(kappale, "Kappaleen generoiminen ei onnistunut. Kokeile generointia esimerkiksi pienemmällä pituudella")
+
+    def test_aseta_uudet_kappale_ja_edelliset_asettaa_arvot_oikein(self):
+        """Testimetodi, joka testaa, että aseta_uudet_kappale_ja_edelliset-funktio
+        asettaa uudet arvot oikein
+        """
+        kappale = [1, 2, 3, 4, 5, 6]
+        edelliset = deque([3, 4, 5, 6])
+
+        aseta_uudet_kappale_ja_edelliset(kappale, edelliset, 4)
+
+        self.assertEqual(kappale, [1, 2, 3, 4, 5])
+        self.assertEqual(edelliset, deque([2, 3, 4, 5]))
+
+        kappale = [1, 2, 3, 4]
+        edelliset = deque([1, 2, 3, 4])
+
+        aseta_uudet_kappale_ja_edelliset(kappale, edelliset, 4)
+
+        self.assertEqual(kappale, [1, 2, 3])
+        self.assertEqual(edelliset, deque([1, 2, 3]))
+
+
+        

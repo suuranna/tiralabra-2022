@@ -48,10 +48,11 @@ def generoi_kappale(aste, pituus, savelia_vai_nuotteja):
     try:
         kappale = etsi_seuraava(pituus, aste, [], trie, deque([]))
     except RecursionError:
-        pass
+        return "Kappaleen generoiminen ei onnistunut. " + \
+               "Kokeile generointia esimerkiksi pienemmällä pituudella"
 
     if kappale is None:
-        return "Kappaleen generoiminen ei onnistunut." + \
+        return "Kappaleen generoiminen ei onnistunut. " + \
                "Kokeile generointia esimerkiksi pienemmällä asteella"
 
     return kappale
@@ -69,9 +70,6 @@ def etsi_seuraava(pituus, aste, kappale, trie, edelliset):
         edelliset: jono kappaleen viimeisistä sävelistä/nuoteista
 
     """
-    if len(kappale) == pituus:
-        return kappale
-
     arpoja = Arpoja()
 
     seuraajat = trie.etsi_sekvenssin_seuraajat(edelliset)
