@@ -41,24 +41,26 @@ def generoi_kappale(aste, pituus, savelia_vai_nuotteja):
 
     if aste > trie.pisin - 1:
         return "Aste voi korkeintaan olla yhden pienempi kuin opetusdatan pisin kappale. Tällä hetkellä korkein mahdollinen aste on: " + str(trie.pisin)
+    kappale = None
+    try:
+        kappale = rekursio(pituus, aste, [], trie, deque([]))
+    except RecursionError:
+        pass
 
-    kappale = rekursio(pituus, aste, [], trie, deque([]))
+    if kappale == None:
+        return "Kappaleen generoiminen ei onnistunut. Kokeile generointia toisilla arvoilla"
 
     return kappale
 
 def rekursio(pituus, aste, kappale, trie, edelliset):
+    """Rekursiivinen funktio, joka etsii kappaleelle seuraavia
+    nuotteja/säveliä
+    """
+    if len(kappale) == pituus:
+        return kappale
     arpoja = Arpoja()
 
     seuraajat = trie.etsi_sekvenssin_seuraajat(edelliset)
-
-    if isinstance(seuraajat, str):
-        if len(kappale) > 0:
-            kappale.pop()
-        if len(edelliset) > 0:
-            edelliset.pop()
-        if len(kappale) - 1 - aste >= 0:
-            edelliset.appendleft(kappale[len(kappale) - 1 - aste])
-        return
 
     while len(seuraajat[0]) > 0:
         seuraaja = arpoja.arvo(seuraajat[0], seuraajat[1])
@@ -74,18 +76,27 @@ def rekursio(pituus, aste, kappale, trie, edelliset):
             edelliset.popleft()
         edelliset.append(seuraaja)
 
+        if len(kappale) == pituus:
+            return kappale
+
+        if not isinstance(trie.etsi_sekvenssin_seuraajat(edelliset), tuple):
+            aseta_uudet_kappale_ja_edelliset(kappale, edelliset, aste)
+            continue
+
         if len(kappale) >= pituus:
             return kappale
         generoitu_kappale = rekursio(pituus, aste, kappale, trie, edelliset)
         if isinstance(generoitu_kappale, list):
             return generoitu_kappale
-        else:
-            if len(kappale) > 0:
-                kappale.pop()
-            if len(edelliset) > 0:
-                edelliset.pop()
-            if len(kappale) - 1 - aste >= 0:
-                edelliset.appendleft(kappale[len(kappale) - 1 - aste])
-            continue
-    return None
+        aseta_uudet_kappale_ja_edelliset(kappale, edelliset, aste)
+    aseta_uudet_kappale_ja_edelliset(kappale, edelliset, aste)
+
+def aseta_uudet_kappale_ja_edelliset(kappale, edelliset, aste):
+    if len(kappale) > 0:
+        kappale.pop()
+    if len(edelliset) > 0:
+        edelliset.pop()
+    if len(kappale) - 1 - aste >= 0:
+        edelliset.appendleft(kappale[len(kappale) - aste])
+
 
