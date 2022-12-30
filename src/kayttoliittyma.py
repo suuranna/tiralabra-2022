@@ -22,8 +22,8 @@ class KL:
         """
         self.juuri = juuri
         self.nakyma_nyt = None
-        self.savelet = TrieRakenne("sävelet")
-        self.nuotit = TrieRakenne("nuotit")
+        #self.savelet = TrieRakenne("sävelet")
+        #self.nuotit = TrieRakenne("nuotit")
 
     def aloita(self):
         """Käynnistää sovelluksen ja laittaa ensimmäiseksi näkymäksi etusivun
@@ -63,9 +63,7 @@ class KL:
         self.piilota_nakyma()
         self.nakyma_nyt = Opetusnakyma(
             self.juuri,
-            self.siirry_etusivulle,
-            self.savelet,
-            self.nuotit)
+            self.siirry_etusivulle)
         self.nakyma_nyt.pakkaa()
 
     def nayta_generoitu_kappale(self):
@@ -75,9 +73,7 @@ class KL:
         self.piilota_nakyma()
         self.nakyma_nyt = Kappalenakyma(
             self.juuri,
-            self.siirry_etusivulle,
-            self.nuotit,
-            self.savelet)
+            self.siirry_etusivulle)
         self.nakyma_nyt.pakkaa()
 
     def nayta_etusivu(self):

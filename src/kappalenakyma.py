@@ -1,5 +1,6 @@
 from tkinter import ttk, Text
 from kappaleen_soittaminen import soita_kappale
+from kappaleen_generoiminen import generoi_kappale
 from viestinakyma import Viestinakyma
 from nakyma import Nakyma
 
@@ -11,26 +12,21 @@ class Kappalenakyma(Nakyma):
         juuri: juurikomponentti
         kehys: komponentti, jonka avulla tämän näkymän komponentit pysyvät vain tässä näkymässä
         takaisin_etusivulle: napin tapahtumakäsittelijä, jolla pääsee takaisin etusivulle
-        savelet: Trierakenne, joka koostuu opetusdatan sävelsekvensseistä
-        nuotit: Trierakenne, joka koostuu opetusdatan nuottisekvensseistä
         tempo: tekstikenttään kirjoitettu tempo
         kappale: generoidun kappaleen sävelet ja nuotit tuplena
     """
-    def __init__(self, juuri, takaisin_etusivulle, nuotit, savelet):
+    def __init__(self, juuri, takaisin_etusivulle):
         """Luokan konstruktori, joka luo uuden kappalenäkymän
 
         Args:
             juuri: juurikomponentti
             takaisin_etusivulle: napin tapahtumakäsittelijä, jolla pääsee takaisin etusivulle
-            savelet: Trierakenne, joka koostuu opetusdatan sävelsekvensseistä
-            nuotit: Trierakenne, joka koostuu opetusdatan nuottisekvensseistä
         """
         super().__init__(juuri)
         self.takaisin_etusivulle = takaisin_etusivulle
-        self.savelet = savelet
-        self.nuotit = nuotit
         self.tempo = None
         self.aste = None
+        self.kappaleen_pituus = None
         self.kappale = None
 
         self.alusta()
@@ -60,9 +56,10 @@ class Kappalenakyma(Nakyma):
         viestinakyma = Viestinakyma()
 
         aste = self.aste.get()
+        kappaleen_pituus = self.kappaleen_pituus.get()
 
-        savelet = self.savelet.generoi_kappale(aste, 20)
-        nuotit = self.nuotit.generoi_kappale(aste, 20)
+        savelet = generoi_kappale(aste, kappaleen_pituus, "sävelet")
+        nuotit = generoi_kappale(aste, kappaleen_pituus, "nuotit")
 
         if isinstance(savelet, str) or isinstance(nuotit, str):
             viestinakyma.nayta_viesti(savelet)
@@ -91,8 +88,12 @@ class Kappalenakyma(Nakyma):
             Kirjoita haluamasi tempo numeromuodossa. \
             Mitä suurempi tempo, sitä nopeampaa kappale soitetaan")
         teksti['state'] = 'disabled'
+        #teksti, jossa sanotaan valitsemaan aste
         self.aste = ttk.Entry(master=self.kehys)
         self.aste.insert(0, "10")
+        #teksti, jossa sanotaan valitsemaan kappaleen pituus
+        self.kappaleen_pituus = ttk.Entry(master=self.kehys)
+        self.kappaleen_pituus.insert(0, "20")
         generoi_uusi = ttk.Button(
             master=self.kehys,
             text="generoi uusi kappale",
@@ -114,7 +115,10 @@ class Kappalenakyma(Nakyma):
             command=self.takaisin_etusivulle)
         otsikko.pack()
         teksti.pack()
+        #teksti
         self.aste.pack()
+        #teksti
+        self.kappaleen_pituus.pack()
         generoi_uusi.pack()
         self.tempo.pack()
         soita.pack()

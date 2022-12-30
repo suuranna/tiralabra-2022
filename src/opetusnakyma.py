@@ -15,18 +15,14 @@ class Opetusnakyma(Nakyma):
         takaisin_etusivulle: napin tapahtumakäsittelijä, jolla pääsee takaisin etusivulle
         data = tekstikenttään kirjoitettu kappale
     """
-    def __init__(self, juuri, takaisin_etusivulle, savelet, nuotit):
+    def __init__(self, juuri, takaisin_etusivulle):
         """Luokan konstruktori, joka luo uuden opetusnäkymän
 
         Args:
             juuri: juurikomponentti
-            savelet: Trierakenne, joka koostuu opetusdatan sävelsekvensseistä
-            nuotit: Trierakenne, joka koostuu opetusdatan nuottisekvensseistä
             takaisin_etusivulle: napin tapahtumakäsittelijä, jolla pääsee takaisin etusivulle
         """
         super().__init__(juuri)
-        self.savelet = savelet
-        self.nuotit = nuotit
         self.takaisin_etusivulle = takaisin_etusivulle
         self.data = None
 
@@ -39,16 +35,15 @@ class Opetusnakyma(Nakyma):
         viestinakyma = Viestinakyma()
         data = self.data.get("1.0", 'end-1c')
 
-        savelet_ja_nuotit = lisaa_opetusdataan_kappale(data)
+        onnistuiko_lisays = lisaa_opetusdataan_kappale(data)
 
-        if isinstance(savelet_ja_nuotit, str):
-            viestinakyma.nayta_viesti(savelet_ja_nuotit)
+        if isinstance(onnistuiko_lisays, str):
+            viestinakyma.nayta_viesti(onnistuiko_lisays)
             return
-        if isinstance(savelet_ja_nuotit, tuple):
-            self.savelet.lisaa_kappale(savelet_ja_nuotit[0])
-            self.nuotit.lisaa_kappale(savelet_ja_nuotit[1])
 
-        viestinakyma.nayta_viesti("kappale lisätty opetusdataan")
+        if isinstance(onnistuiko_lisays, int):
+            viestinakyma.nayta_viesti("Kappale lisätty opetusdataan onnistuneesti")
+            return
 
     def alusta(self):
         """Alustaa opetusnäkymän ja luo sen visuaaliset komponentit

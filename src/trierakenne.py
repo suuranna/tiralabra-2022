@@ -24,14 +24,11 @@ class TrieRakenne:
         self.alku = Solmu("")
         self.savelet_vai_nuotit = savelet_vai_nuotit
         self.pisin = 0
-        self.arpoja = Arpoja()
 
-    def alusta(self, aste):
+    def lisaa_opetusdata_trieen(self, aste):
         """Alustaa Trie-rakenteen siten, että lisätään Trie-rakenteenseen
         data.json-tiedostossa olevat opetusdatan kappaleet
         """
-        self.alku = Solmu("")
-
         data = avaa_json()
         if self.savelet_vai_nuotit == "sävelet":
             for savelet in data["savelet"]:
@@ -40,18 +37,11 @@ class TrieRakenne:
             for nuotit in data["nuotit"]:
                 self.lisaa_kappale(aste, nuotit)
 
-    def kay_lapi_kaikki(self, solmu):
-        print("tämä solmu on: " + str(solmu.nimi))
-        print("ja sen lapsia ovat:")
-        for lapsi in solmu.lapset.keys():
-            print(lapsi + ", ja sen määrä on: " + str(solmu.lapset[lapsi].maara))
-        print("--------")
-        for lapsi in solmu.lapset.keys():
-            self.kay_lapi_kaikki(solmu.lapset[lapsi])
-
     def lisaa_kappale(self, aste, kappale):
         if aste + 1 > len(kappale):
             return
+        if len(kappale) > self.pisin:
+            self.pisin = len(kappale)
         solmu = self.alku
 
         for indeksi in range(len(kappale) - aste):
@@ -78,7 +68,6 @@ class TrieRakenne:
             try:
                 solmu = solmu.lapset[alkio]
             except KeyError:
-                print("tällä sekvensisllä ei ole seuraajia")
                 return "Tällä sekvenssillä ei ole seuraajia"
         
         for lapsi in solmu.lapset:
@@ -87,42 +76,3 @@ class TrieRakenne:
 
         return (seuraajat, frekvenssit)
 
-    def generoi_kappale(self, aste, pituus):
-        try:
-            aste = int(aste)
-        except ValueError:
-            return "Kirjoita aste numeromuodossa esim. 10"
-
-        self.alusta(aste)
-
-        kappale = []
-        edelliset = deque([])
-
-        for i in range(aste):
-            seuraajat = self.etsi_sekvenssin_seuraajat(edelliset)
-            seuraaja = self.arpoja.arvo(seuraajat[0], seuraajat[1])
-            kappale.append(seuraaja)
-            edelliset.append(seuraaja)
-
-        while len(kappale) < pituus:
-            seuraajat = self.etsi_sekvenssin_seuraajat(edelliset)
-
-            if isinstance(seuraajat, str):
-                if len(kappale) > 0:
-                    kappale.pop()
-                if len(edelliset) > 0:
-                    edelliset.popleft()
-                if len(kappale) - 1 >= 0:
-                        edelliset.append(kappale[len(kappale) - 1])
-                continue
-
-            seuraaja = self.arpoja.arvo(seuraajat[0], seuraajat[1])
-
-            kappale.append(seuraaja)
-
-            if len(edelliset) == aste:
-                edelliset.popleft()
-                edelliset.append(seuraaja)
-            else:
-                edelliset.append(seuraaja)
-        return kappale

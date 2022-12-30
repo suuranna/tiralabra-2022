@@ -2,7 +2,7 @@ from json_funktiot import avaa_json, tallenna_json
 from syotetyn_kappaleen_tarkistus import syotetyn_kappaleen_tarkistus
 
 def lisaa_opetusdataan_kappale(kappale):
-    """Metodi, joka ensin tarkistaa toisella metodilla, että annettu kappale
+    """Funktio, joka ensin tarkistaa toisella funktiolla, että annettu kappale
     on oikeassa muodossa, ja lisää sitten sen data.json-tiedostoon
 
     Args:
