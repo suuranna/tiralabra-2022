@@ -30,4 +30,9 @@ Kappaleen generoinnin voisi luultavasti toteuttaa jollakin paremmalla tekniikall
 Lisäksi opetusdataa voisi olla enemmän. Nuotit olisi voinut myös generoida hieman eri tavalla kuin sävelet, jotta generoidut kappaleet
 olisivat voineet kuulostaa enemmän musiikilta.
 
+## Lähteet
+
+- Opetusdatan kappaleiden nuotit: https://musescore.org/fi
+- https://albertauyeung.github.io/2020/06/15/python-trie.html/
+- Ohjaajan telegram-viestit
 
