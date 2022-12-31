@@ -38,4 +38,37 @@ Suorituskykytestauksessa on testattu kappaleen generointia isolla trie-rakenteel
 
 #### Kappaleen generoinnin suorituskykytestaus
 
+Testasin, miten kappaleen generoiminen vaihtelee generoidessa sävelsekvensseistä koostuvasta triestä ja nuoteista koostuvasta triestä. Valitsin asteeksi 20 ja generoitavan kappaleen pituudeksi 60. Opetusdata koostui sadasta sadan sävelen/nuotin mittaisesta kappaleesta. Generointia toistettiin joka kierroksella eri määrä.
+
+Lisää kuva
+
+Lopputulemana oli, että nuottisekvensseistä koostuvan trien avulla on vähän nopeampaa generoida uusia kappaleita.
+
+
+Toinen asia, jota testasin, oli se, miten aste vaikuttaa generoinnin nopeuteen sävelsekvensseistä koostuvan trien ja nuoteista koostuvan trien välillä.
+Joka kierroksella generoitiin yksi 200 sävelen/nuotin mittainen kappale. Aste kasvoi joka kierros.
+
+Lisää kuva
+
+Lopputulemana oli, että suurimmaksi osaksi nuottisekvensseistä koostuvan trien avulla oli hiukan nopeampaa generoida uusi kappale.
+
+
 #### Kappaleen lisäämisen suorituskykytestaus
+
+Testasin, miten trie-rakenteen koko vaikuttaa siihen, miten nopeaa on lisätä lisää kappaleita trieen. Kokeilin kappaleiden lisäämistä trieen, joka on tyhjä silloin kun lisäys tehdään, toiseen trieen, johon oli jo valmiiksi lisätty 1000 kappaletta 200:n sävelen mittaista kappaletta asteella 20, ja kolmanteen trieen, jonka koko kasvoi joka kierroksella.
+
+Lisää kuva kuvaajasta
+
+Toinen asia, jota testasin kappaleen lisäämisessä, oli se, miten aste vaikuttaa lisäämiseen. Kokeilin lisäämistä taas kolmeen eri trieen: tyhjään, isoon ja kasvavaan trieen. Isoon trieen lisätään joka kierroksen alussa 100 kappaletta 505:n sävelen mittaista sekvenssiä sen kierroksen asteella.
+
+Lisää kuva kuvaajasta
+
+Lopputulema on se, että mitä suurempi aste ja trie, sitä kauemmin menee lisätä uusia sekvenssejä trieen.
+Lisäksi kasvava trie ei loppujen lopuksi varmaan ollut hyvä tähän testiin, koska joka kierroksella siihen lisättiin eripituisia sekvenssejä.
+
+
+Kolmas testaamani asia oli verrata sävelsekvenssien lisäämistä trieen ja nuottisekvenssien lisäämistä toiseen trieen. Molempiin triieihin lisättiin 100 kappaletta asteella 20, ja kappaleiden pituus vaihteli joka kierroksella.
+
+Lisää kuva
+
+Lopputulemana oli se, että sävelsekvenssejä on nopeampaa lisätä kuin nuottisekvenssejä. Sovelluksessa on käytössä kolme oktaavia, seitsemän säveltä, joista kaikki voivat olla ylennettyjä, alennettuja tai vain sellaisenaan. Näin ollen sävelsekvenseissä voi koostua 63 eri sävelestä, kun taas nuottisekvenssi voi koostua vain seitsemästä eri nuotista, koska sovelluksessa on käytössä vain seitsemän eri nuottia.
