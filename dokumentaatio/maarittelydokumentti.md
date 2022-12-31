@@ -19,10 +19,3 @@ Aion hyödyntää Markovin ketjua ja trie-tietorakennetta. Markovin ketjun avull
 
 Trie-tietorakenteen tilavaativuus on O(n). Aikavaativuutta on vaikea sanoa tässä vaiheessa, mutta varmaan parempi kuin O(n^2)
 
-
-## Lähteet:
-
-
-Opetusdatana käytettyjen kappaleiden nuotit: https://musescore.org/fi
-
-Opetusdatana käyetyt kappaleet:
