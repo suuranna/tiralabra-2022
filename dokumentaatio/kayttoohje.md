@@ -60,9 +60,7 @@ Esimerkiksi "C4#-1/4" on ylennetty C-sävel ja "D4b-1/4" on alennettu D-sävel
 
 ![kappalenakyma.jpg](kuvat/kappalenakyma.jpg)
 
-Kappalenäkymässä generoidun kappaleen voi kuunnella haluamassaa tempossa. Mitä suurempi tempo, sitä nopeampaa generoitu kappale soitetaan. Generoitu kappale on tällä hetkellä 10-20 säveltä/nuottia pitkä. Koska sovelluksessa ei ole määritelty ennalta mitään astetta Markovin ketjulle, ottaa kappaleen generointi kaikki edelliset sävelet/nuotit huomioon generoidessa uutta kappaletta, minkä takia lopputulos muistuttaa usein jotakin opetusdatassa olevaa kappaletta.
-
-Kappalenäkymässä voi myös generoida uuden kappaleen. Kappaleen generointi hyödyntää Markovin ketjua ja 
+Kappalenäkymässä generoidun kappaleen voi kuunnella haluamassaa tempossa. Mitä suurempi tempo, sitä nopeampaa generoitu kappale soitetaan. Käyttäjä saa itse valita Markovin ketjun asteen, eli määrittää kuinka pitkiä sekvenssejä trie-rakenteeseen tallenetaan, ja myös generoitavan kappaleen pituuden saa itse valita. Generoinnin jälkeen käyttäjä voi valita missä tempossa kappale soitetaan.
 
 
 ### Viestinäkymä
