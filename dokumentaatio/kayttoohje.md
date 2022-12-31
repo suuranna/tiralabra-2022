@@ -26,19 +26,20 @@ visuaalisen testikattavuusrapotin selaimeen.
 
 Sovelluksen käynnistäessa aukeaa etusivunäkymä, jossa nappia painamlla voi joko generoida uuden kappaleen ja siirtyä kuuntelemaan sitä toiseen näkymään tai sitten siirtyä näkymään, jossa voi lisätä kappaleen opetusdataan.
 
-Sovelluksessa on kolme näkymää: etusivu-, opetus- ja kappalenäkymä, ja käyttäjä voi siirtyä näiden näkymien välillä. 
+Sovelluksessa on kolme näkymää: etusivu-, opetus- ja kappalenäkymä, ja käyttäjä voi siirtyä näiden näkymien välillä. Lisäksi on viestinäkymä, jolla 
+käyttäjälle näytetään viestejä.
 
 
 ### Etusivu:
 
-(Lisää kuva etusivusta)
+![etusivu.jpg](kuvat/etusivu.jpg)
 
 Sovelluksen käynnistyessä aukeaa etusivunäkymä, jossa käyttäjä voi generoida uuden kappaleen ja siirtyä samalla kappalenäkymään kuuntelemaan uutta generoitua kappaletta. Etusivulta käyttäjä voi myös halutessaan siirtyä opetusnäkymään, jossa hän voi lisätä jonkun valmiin kappaleen opetusdataan.
 
 
 ### Opetusnäkymä:
 
-(lisää kuva opetusnäkymästä)
+![opetusnakyma.jpg](kuvat/opetusnakyma.jpg)
 
 Opetusnäkymässä käyttäjä voi kirjoittaa haluamansa kappaleen nuotit ja sävelet seuraavanlaisessa muodossa:
 
@@ -57,10 +58,15 @@ Esimerkiksi "C4#-1/4" on ylennetty C-sävel ja "D4b-1/4" on alennettu D-sävel
 
 ### Kappalenäkymä:
 
-(lisää kuva kappalenäkymästä)
+![kappalenakyma.jpg](kuvat/kappalenakyma.jpg)
 
 Kappalenäkymässä generoidun kappaleen voi kuunnella haluamassaa tempossa. Mitä suurempi tempo, sitä nopeampaa generoitu kappale soitetaan. Generoitu kappale on tällä hetkellä 10-20 säveltä/nuottia pitkä. Koska sovelluksessa ei ole määritelty ennalta mitään astetta Markovin ketjulle, ottaa kappaleen generointi kaikki edelliset sävelet/nuotit huomioon generoidessa uutta kappaletta, minkä takia lopputulos muistuttaa usein jotakin opetusdatassa olevaa kappaletta.
 
 Kappalenäkymässä voi myös generoida uuden kappaleen. Kappaleen generointi hyödyntää Markovin ketjua ja 
 
 
+### Viestinäkymä
+
+![viestinakyma.jpg](kuvat/viestinakyma.jpg)
+
+Viestinäkymä on omaan ikkunaansa aukeava näkymä, jolla käyttäjälle näyetään viestejä.
