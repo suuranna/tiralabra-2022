@@ -41,4 +41,4 @@ def lisaa_opetusdataan_kappale(kappale):
 
     tallenna_json(opetusdata)
 
-    return (savelet, nuotit)
+    return 1
