@@ -115,7 +115,7 @@ class Kappalenakyma(Nakyma):
             height=1,
             width=25)
         tempo_teksti.insert('1.0', " Valitse tempo, esim. 60")
-        teksti['state'] = 'disabled'
+        tempo_teksti['state'] = 'disabled'
         self.tempo = ttk.Entry(master=self.kehys)
         self.tempo.insert(0, "120")
 

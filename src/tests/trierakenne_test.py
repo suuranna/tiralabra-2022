@@ -68,3 +68,5 @@ class TestTrierakenne(unittest.TestCase):
 
         seuraajat = self.trie.etsi_sekvenssin_seuraajat(["A4", "C4", "C4", "B4"])
         self.assertTrue(isinstance(seuraajat[0], str))
+
+
