@@ -15,7 +15,7 @@ class Test_generoi_kappale(unittest.TestCase):
 
     def test_generoi_kappale_ei_generoi_vaaranlaisilla_parametreilla(self):
         """Testimetodi, joka testaa, että generoi_kappale-funktio ei
-        generoi vääränlaisilla ___
+        generoi vääränlaisilla parametreilla
         """
         kappale = generoi_kappale("kuusi", 7, "sävelet")
         self.assertTrue(isinstance(kappale, str))
@@ -93,7 +93,7 @@ class Test_generoi_kappale(unittest.TestCase):
             self.assertTrue(isinstance(kappale, list))
 
     def test_generoi_kappale_palauttaa_virheviestin_jos_generointi_ei_onnistunut(self):
-        """Testimetodi, joka testaa, että generoi_kappale palauttaa None,
+        """Testimetodi, joka testaa, että generoi_kappale palauttaa virhevietin,
         jos kappaleen generoiminen ei onnistu
         """
         data_alussa = avaa_json()

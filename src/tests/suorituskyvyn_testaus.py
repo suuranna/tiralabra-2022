@@ -15,8 +15,11 @@ class Suorituskykytestaus:
 
     Attributes:
         trie: Trierakenne, joka koostuu sävelsekvensseistä
+        trie2: Trierakenne, joka koostuu nuottisekvensseistä
         alkuperainenData: data.json-tiedoston sisältö ennen 
             suorituskykytestausta
+        uusi_data_nuotit: opetusdataan lisättävät nuotit
+        uusi_data_savelet: opetusdataan lisättävät sävelet
     """
     def __init__(self):
         """Luokan konstruktori, joka luo uuden Suorituskykytestaus-olion
@@ -68,9 +71,10 @@ class Suorituskykytestaus:
         """Metodi, joka generoi halutun pituusia kappaleita halutun määrän
 
         Args:
-            minimi: generoitavan kappaleen minimipituus
-            maksimi: generoitavan kappaleen maksimipituus
+            aste: määrittää, minkä pituisia sekvenssejä trieen lisätään
+            pituus: määrittää, kuinka pitkä kappale generoidaan
             kappaliden_maara: metodi generoi tämän verran kappaleita
+            savelet_vai_nuotit: kertoo, generoidaanko säveliä vai nuotteja
         """
         aikaAlussa = time.time()
         for i in range(kappaleiden_maara):
@@ -131,7 +135,7 @@ def main():
     for i in kappaleenKoot:
         skt = Suorituskykytestaus()
         print("Sävelsekvenssien lisääminen: ")
-        skt.datan_lisaaminen_trieen(20,100, i, "sävelet")
+        skt.datan_lisaaminen_trieen(20, 100, i, "sävelet")
         print("Nuottisekvenmssien lisääminen: ")
         skt.datan_lisaaminen_trieen(20, 100, i, "nuotit")
         print("--------")

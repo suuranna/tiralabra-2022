@@ -7,6 +7,7 @@ class Viestinakyma(Nakyma):
 
     Attributes:
         juuri: juurikomponentti
+        komponentti, jonka avulla tämän näkymän komponentit pysyvät vain tässä näkymässä
     """
     def __init__(self):
         """Luokan konstruktori, joka luo uuden viestinäkymän omassa ikkunassa
@@ -17,6 +18,7 @@ class Viestinakyma(Nakyma):
 
     def nayta_viesti(self, viesti):
         """Luo viestinäkymän komponentit ja näyttää viesti-ikkunassa argumenttinä annetun viestin
+        
         Args:
             viesti: String-muodossa oleva viesti, joka halutaan näyttää
                 käyttäjälle viesti-ikkunassa
